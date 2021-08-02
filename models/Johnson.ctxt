@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Johnson
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Johnson\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=receptorMedicalProcedure\ medicalProcedureManager
+comment1.target=Johnson(ReceptorMedicalProcedure,\ MedicalProcedureManager)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Johnson\r\n
+comment2.params=medicalProcedureVisitor
+comment2.target=boolean\ accept(MedicalProcedureVisitor)
+comment3.params=visitor
+comment3.target=void\ accept(MedicalVaccineVisitor)
+comment4.params=
+comment4.target=void\ performVaccination()
+comment5.params=
+comment5.target=void\ subtractVaccineDose()
+comment6.params=
+comment6.target=java.lang.String\ getNameArticle()
+comment7.params=
+comment7.target=Article\ getArticle()
+comment8.params=
+comment8.target=boolean\ canBeVaccinated()
+comment9.params=
+comment9.target=boolean\ isCompleteVaccinationGuideline()
+numComments=10

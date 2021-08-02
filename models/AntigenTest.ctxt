@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=AntigenTest
+comment0.text=\r\n\ Abstract\ class\ PruebasAntigenos\ -\ write\ a\ description\ of\ the\ class\ here\r\n\r\n\ @author\:\ Date\:\r\n
+comment1.params=receptorMedicalProcedure\ medicalProcedureManager
+comment1.target=AntigenTest(ReceptorMedicalProcedure,\ MedicalProcedureManager)
+comment2.params=collector
+comment2.target=void\ collectMedicalSample(MedicalSampleCollector)
+comment3.params=medicalSample
+comment3.target=void\ setMedicalSample(MedicalSample)
+comment4.params=
+comment4.target=MedicalSample\ getSampleType()
+comment5.params=
+comment5.target=boolean\ isMedicalSampleEmpty()
+comment6.params=
+comment6.target=MedicalSample\ getMedicalSample()
+comment7.params=
+comment7.target=void\ performMedicalProcedure()
+numComments=8

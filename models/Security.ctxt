@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Security
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Seguridad\ here.\r\n\ TODO\:\ recibe\ una\ persona\ y\ una\ operacion\ y\r\n\ determina\ si\ esa\ persona\ puede\ realizarla\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=person\ operacion
+comment1.target=boolean\ isPermissions(Person,\ java.lang.String)
+comment1.text=\r\n\ Encargado\ de\ recorrer\ los\ posibles\ metodos\ registrados\ en\r\n\ la\ colecci\u00F3n\ Permisos\ y\ devolver\ el\ true/false\ en\ funcion\ de\r\n\ si\ ha\ sido\ encontrado\ el\ metodo\ para\ el\ tipo\ de\ usuario\ pertinente\r\n
+numComments=2

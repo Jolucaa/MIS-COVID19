@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=MedicalDiagnosticVisitor
+comment0.text=\r\n\ Write\ a\ description\ of\ interface\ VisitadorProcedimiento\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=pcr
+comment1.target=void\ visit(PCR)
+comment2.params=serologicalAnalysis
+comment2.target=void\ visit(SerologicalAnalysis)
+comment3.params=classicTest
+comment3.target=void\ visit(ClassicTest)
+comment4.params=fastTest
+comment4.target=void\ visit(FastTest)
+numComments=5

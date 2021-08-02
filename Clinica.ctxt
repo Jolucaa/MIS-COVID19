@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Clinica
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ clinica\ here.\r\n\r\n\ @author\ (Jose\ Luis\ Garcia\ Cabeza)\r\n\ @version\ (alpha\ -\ 0.0.0)\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\r\n\ Init\ point\ of\ program\r\n
+comment2.params=view\ logic
+comment2.target=Clinica(views.View,\ Logic)
+comment3.params=
+comment3.target=void\ start()
+comment3.text=\r\n\ Inicia\ los\ controladores\ que\ gestionaran\r\n\ la\ logica\ de\ la\ clinica\r\n
+numComments=4

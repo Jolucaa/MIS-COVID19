@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=OperationalView
+comment1.params=userManagementController
+comment1.target=void\ visit(controllers.UserManagementController)
+comment2.params=managmentController
+comment2.target=void\ visit(controllers.ManagmentController)
+comment3.params=managementProcedureController
+comment3.target=void\ visit(controllers.ManagementProcedureController)
+numComments=4

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=View
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Vista\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n\ Se\ encarga\ de\ unificar\ el\ codigo\ repetido\ de\ las\ vistas\ especificas\r\n
+comment1.params=controller
+comment1.target=void\ interact(controllers.Controller)
+comment2.params=startController
+comment2.target=void\ visit(controllers.StartController)
+comment3.params=operationController
+comment3.target=void\ visit(controllers.OperationController)
+comment4.params=backController
+comment4.target=void\ visit(controllers.BackController)
+numComments=5

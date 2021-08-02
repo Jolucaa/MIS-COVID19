@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=utils.IntegerLimited
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ IntegerLimitedDialog\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=min\ max
+comment1.target=utils.IntegerLimited(java.lang.Integer,\ java.lang.Integer)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ IntegerLimitedDialog\r\n
+comment2.params=number
+comment2.target=java.lang.Integer\ set(java.lang.Integer)
+comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ number\ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ Integer\ if\ value\ is\ between\ interval\ otherwise\ null\r\n
+numComments=3

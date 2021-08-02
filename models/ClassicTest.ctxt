@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=ClassicTest
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ TestClasico\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=receptorMedicalProcedure\ medicalProcedureManager
+comment1.target=ClassicTest(ReceptorMedicalProcedure,\ MedicalProcedureManager)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ TestClasico\r\n
+comment2.params=visitor
+comment2.target=boolean\ accept(MedicalProcedureVisitor)
+numComments=3

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=WarehouseManager
+comment0.text=\r\n\ Clase\ necesaria\ para\ rompre\ el\ ciclo\ de\ Almacen\ con\ Vacunas\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=WarehouseManager()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GestorAlmacen\r\n
+comment2.params=name\ article
+comment2.target=boolean\ remove(java.lang.String,\ Article)
+comment3.params=
+comment3.target=Warehouse\ getWarehouse()
+comment4.params=name\ article
+comment4.target=void\ add(java.lang.String,\ java.util.ArrayList)
+comment5.params=name\ article
+comment5.target=void\ add(java.lang.String,\ Article)
+numComments=6

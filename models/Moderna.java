@@ -1,0 +1,69 @@
+package models;
+
+/**
+ * Write a description of class Moderna here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class Moderna extends VaccineBiDose {
+
+    /**
+     * Constructor for objects of class Moderna
+     */
+    public Moderna(ReceptorMedicalProcedure receptorMedicalProcedure, MedicalProcedureManager medicalProcedureManager) {
+        super(receptorMedicalProcedure, medicalProcedureManager);
+    }
+
+    @Override
+    public boolean accept(MedicalProcedureVisitor medicalProcedureVisitor) {
+        return medicalProcedureVisitor.visit(this);
+    }
+
+    @Override
+    public DiagnosticTest identify(MedicalHistory medicalHistory) {
+        return null;
+    }
+
+    @Override
+    public Vaccine vaccineFamily(MedicalHistory medicalHistory) {
+        return this;
+    }
+
+    @Override
+    public void accept(MedicalVaccineVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    protected Integer getVaccineDose() {
+        return this.getReceptorMedicalProcedure().getVaccineDoseInjected(this.toString());
+    }
+
+    @Override
+    protected void performVaccination() {
+        if(this.canBeVaccinated()) {
+            this.getReceptorMedicalProcedure().addToMedicalHistory(this);
+        }
+    }
+
+    @Override
+    protected boolean canBeVaccinated() {
+        return this.getReceptorMedicalProcedure().isFulfillWithRequirements(this);
+    }
+
+    @Override
+    public void subtractVaccineDose() {
+        this.getWarehouseManager().remove(this.getNameArticle(), this);
+    }
+
+    @Override
+    public String getNameArticle() {
+        return this.getClass().toString();
+    }
+
+    @Override
+    public Article getArticle() {
+        return this;
+    }
+}

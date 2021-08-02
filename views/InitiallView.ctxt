@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=InternalView
+comment1.params=
+comment1.target=InternalView()
+comment2.params=
+comment2.target=utils.Console\ getConsole()
+comment3.params=controller
+comment3.target=void\ interact(controllers.Controller)
+comment4.params=startController
+comment4.target=void\ visit(controllers.StartController)
+comment5.params=operationController
+comment5.target=void\ visit(controllers.OperationController)
+comment6.params=backController
+comment6.target=void\ visit(controllers.BackController)
+numComments=7

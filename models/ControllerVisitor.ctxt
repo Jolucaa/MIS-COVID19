@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=ControllerVisitor
+comment0.text=\r\n\ Write\ a\ description\ of\ interface\ OperationController\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=controller
+comment1.target=void\ visit(controllers.StartController)
+comment2.params=controller
+comment2.target=void\ visit(controllers.BackController)
+comment3.params=controller
+comment3.target=void\ visit(controllers.AdminCreatorController)
+comment4.params=controller
+comment4.target=void\ visit(controllers.NewPatientController)
+comment5.params=controller
+comment5.target=void\ visit(controllers.NewProcedureController)
+comment6.params=controller
+comment6.target=void\ visit(controllers.SwitchUserController)
+comment7.params=controller
+comment7.target=void\ visit(controllers.OperationController)
+numComments=8

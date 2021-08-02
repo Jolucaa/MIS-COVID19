@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=MedicalVaccineVisitor
+comment0.text=\r\n\ Write\ a\ description\ of\ interface\ MedicalVaccineVisitor\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=pfizer
+comment1.target=void\ visit(Pfizer)
+comment2.params=moderna
+comment2.target=void\ visit(Moderna)
+comment3.params=johnson
+comment3.target=void\ visit(Johnson)
+numComments=4

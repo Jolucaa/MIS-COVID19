@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=MedicalProcedureVisitor
+comment1.params=pfizer
+comment1.target=boolean\ visit(Pfizer)
+comment2.params=moderna
+comment2.target=boolean\ visit(Moderna)
+comment3.params=johnson
+comment3.target=boolean\ visit(Johnson)
+comment4.params=pcr
+comment4.target=boolean\ visit(PCR)
+comment5.params=serologicalAnalysis
+comment5.target=boolean\ visit(SerologicalAnalysis)
+comment6.params=classicTest
+comment6.target=boolean\ visit(ClassicTest)
+comment7.params=fastTest
+comment7.target=boolean\ visit(FastTest)
+numComments=8

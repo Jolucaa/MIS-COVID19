@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Technician
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Technician\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=personalInformation
+comment1.target=Technician(PersonalInformation)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Technician\r\n
+comment2.params=pcr
+comment2.target=void\ visit(PCR)
+comment3.params=serologicalAnalysis
+comment3.target=void\ visit(SerologicalAnalysis)
+comment4.params=classicTest
+comment4.target=void\ visit(ClassicTest)
+comment5.params=fastTest
+comment5.target=void\ visit(FastTest)
+numComments=6

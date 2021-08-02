@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Warehouse
+comment0.text=\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=Warehouse()
+comment2.params=
+comment2.target=int\ getNumeroArticulos()
+comment3.params=
+comment3.target=java.util.HashMap\ getArticulos()
+comment4.params=nombreArticulo\ article
+comment4.target=void\ insertar(java.lang.String,\ Article)
+comment5.params=nombre
+comment5.target=java.util.ArrayList\ getColeccion(java.lang.String)
+comment6.params=nombreArticulo\ article
+comment6.target=void\ insertar(java.lang.String,\ java.util.ArrayList)
+comment7.params=nombre\ article
+comment7.target=Article\ getArticulo(java.lang.String,\ Article)
+comment8.params=iterador\ articleBuscado
+comment8.target=Article\ buscarArticulo(java.util.Iterator,\ Article)
+comment9.params=nombre\ article
+comment9.target=boolean\ eliminar(java.lang.String,\ Article)
+numComments=10

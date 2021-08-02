@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=TechnicianManager
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ TechnicianManager\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=TechnicianManager()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ TechnicianManager\r\n
+comment2.params=technician
+comment2.target=PersonalInformation\ getPersonalInformation(Technician)
+comment3.params=
+comment3.target=java.util.ArrayList\ getArrayList()
+comment4.params=technician
+comment4.target=java.lang.Integer\ getId(Technician)
+comment5.params=personalInformation
+comment5.target=Technician\ create(PersonalInformation)
+numComments=6
