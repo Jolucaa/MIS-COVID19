@@ -10,7 +10,6 @@ public class IntegerLimited {
     // instance variables - replace the example below with your own
     private final Integer min;
     private final Integer max;
-    private Integer value = 0;
 
     /**
      * Constructor for objects of class IntegerLimitedDialog
@@ -29,8 +28,8 @@ public class IntegerLimited {
      * @return Integer if value is between interval otherwise null
      */
     public Integer set(Integer number) {
-        if (min >= number && number <= max) {
-            this.value = number;
+        if (min <= number && number <= max) {
+            return number;
         }
         return null;
     }

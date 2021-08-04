@@ -19,16 +19,11 @@ public class PersonalInformation {
      * @param name    String
      * @param surname String
      * @param phone   Integer
-     * @return PersonalInformation Object
      */
     public PersonalInformation(String name, String surname, Integer phone) {
-        assert (name != null);
-        assert (surname != null);
-        assert (phone != null);
-        assert (this.isValidPhone(phone));
-        this.name = name;
-        this.surname = surname;
-        this.phone = phone;
+        this.setName(name);
+        this.setSurname(surname);
+        this.setPhone(phone);
     }
 
     /**
