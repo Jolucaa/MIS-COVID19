@@ -14,7 +14,7 @@ public abstract class UserManager extends Employee {
     /**
      * Constructor for objects of class UserManager
      */
-    public UserManager(PersonalInformation personalInformation) {
+    protected UserManager(PersonalInformation personalInformation) {
         super(personalInformation);
         this.nurseManager = new NurseManager();
         this.technicianManager = new TechnicianManager();
