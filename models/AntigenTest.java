@@ -30,7 +30,7 @@ public abstract class AntigenTest extends DiagnosticTest {
                 return new ErrorMedicalSampleNotCollected();
             }
         }
-        return new ErroDiagnostictAnalyzerNotSet();
+        return new ErrorDiagnosticAnalyzerNotSet();
     }
 
 }
