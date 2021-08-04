@@ -37,14 +37,16 @@ public class Pfizer extends VaccineBiDose {
 
     @Override
     protected Integer getVaccineDose() {
-        return this.getReceptorMedicalProcedure().getVaccineDoseInjected(this.toString());
+        return this.getReceptorMedicalProcedure().getVaccineDoseInjected(this.getClass().getSimpleName());
     }
 
     @Override
-    protected void performVaccination() {
+    protected ClinicError performVaccination() {
         if(this.canBeVaccinated()) {
             this.getReceptorMedicalProcedure().addToMedicalHistory(this);
+            return null;
         }
+        return new ErrorVaccinationError();
     }
     @Override
     protected boolean canBeVaccinated() {

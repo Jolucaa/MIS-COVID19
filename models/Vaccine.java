@@ -1,11 +1,12 @@
 package models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Abstract class Vaccine - write a description of the class here
  *
- * @author: Date:
+ * @author: Jose Luis Garcia Cabeza Date:
  */
 public abstract class Vaccine extends MedicalProcedure implements Article {
     private final WarehouseManager warehouseManager;
@@ -16,18 +17,17 @@ public abstract class Vaccine extends MedicalProcedure implements Article {
     }
 
     public ClinicError performMedicalProcedure() {
-        if (this.isCompleteVaccinationGuideline()) {
-            this.subtractVaccineDose();
-        } else {
-            this.performVaccination();
+        ClinicError error = this.performVaccination();
+        if(error != null) {
+            this.setDateRealization(LocalDate.now());
+            if (this.isCompleteVaccinationGuideline()) {
+                this.subtractVaccineDose();
+            }
         }
-        this.setDateRealization(LocalDate.now());
-        return null;
+        return error;
     }
 
-    protected abstract void performVaccination();
-
-    protected abstract boolean isCompleteVaccinationGuideline();
+    protected abstract ClinicError performVaccination();
 
     protected abstract void subtractVaccineDose();
 
@@ -40,5 +40,11 @@ public abstract class Vaccine extends MedicalProcedure implements Article {
     }
 
     public abstract Integer getNecessaryVaccines();
+
+    protected abstract Integer getVaccineDose();
+
+    protected boolean isCompleteVaccinationGuideline() {
+        return this.getNecessaryVaccines() <= this.getVaccineDose();
+    }
 
 }

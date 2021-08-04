@@ -27,7 +27,7 @@ public class Johnson extends Vaccine {
 
     @Override
     public Vaccine vaccineFamily(MedicalHistory medicalHistory) {
-        return this;
+        return medicalHistory.vaccineFamily(this);
     }
 
     @Override
@@ -41,8 +41,12 @@ public class Johnson extends Vaccine {
     }
 
     @Override
-    public void performVaccination() {
-
+    public ClinicError performVaccination() {
+        if(this.canBeVaccinated()) {
+            this.getReceptorMedicalProcedure().addToMedicalHistory(this);
+            return null;
+        }
+        return new ErrorVaccinationError();
     }
 
     @Override
@@ -51,7 +55,7 @@ public class Johnson extends Vaccine {
     }
     @Override
     public String getNameArticle() {
-        return this.getClass().toString();
+        return this.getClass().getSimpleName();
     }
     @Override
     public Article getArticle() {
@@ -60,10 +64,11 @@ public class Johnson extends Vaccine {
 
     @Override
     protected boolean canBeVaccinated() {
-        return false;
+        return this.getReceptorMedicalProcedure().isFulfillWithRequirements(this);
     }
+
     @Override
-    public boolean isCompleteVaccinationGuideline() {
-        return true;
+    protected Integer getVaccineDose() {
+        return this.getReceptorMedicalProcedure().getVaccineDoseInjected(this.getClass().getSimpleName());
     }
 }
