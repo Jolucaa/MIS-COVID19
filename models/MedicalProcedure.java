@@ -3,7 +3,7 @@ package models;
 import java.time.LocalDate;
 
 /**
- * Write a description of interface Procedimieno here.
+ * Write a description of interface MedicalProcedure here.
  *
  * @author (your name)
  * @version (a version number or a date)
