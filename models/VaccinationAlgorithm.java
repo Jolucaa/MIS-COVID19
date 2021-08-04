@@ -2,43 +2,38 @@ package models;
 
 import java.time.LocalDate;
 
-public class VaccinationAlghoritm {
+public class VaccinationAlgorithm {
     private MedicalHistory medicalHistory;
 
-    public VaccinationAlghoritm(MedicalHistory medicalHistory) {
+    public VaccinationAlgorithm(MedicalHistory medicalHistory) {
         this.medicalHistory = medicalHistory;
     }
 
     public boolean isFulfillWithRequirements(Pfizer vaccine) {
-        if (this.isGuidelineVaccinationComplete(vaccine)) {
-        if (this.isISameVaccineWichInitiated(Moderna.class.toString(), Johnson.class.toString())) {
+        if (this.isISameVaccineWichInitiated(Moderna.class.getSimpleName(), Johnson.class.getSimpleName())) {
             if (this.isTimeElapseToVaccinate(vaccine)) {
                 medicalHistory.add(vaccine.getClass().toString(), vaccine);
                 return true;
             }
         }
-    }
+
         return false;
     }
 
     public boolean isFulfillWithRequirements(Moderna vaccine) {
-        if(this.isGuidelineVaccinationComplete(vaccine)) {
-            if (this.isISameVaccineWichInitiated(Johnson.class.toString(), Pfizer.class.toString())) {
-                if (this.isTimeElapseToVaccinate(vaccine)) {
-                    medicalHistory.add(vaccine.getClass().toString(), vaccine);
-                    return true;
-                }
+        if (this.isISameVaccineWichInitiated(Johnson.class.getSimpleName(), Pfizer.class.getSimpleName())) {
+            if (this.isTimeElapseToVaccinate(vaccine)) {
+                medicalHistory.add(vaccine.getClass().toString(), vaccine);
+                return true;
             }
         }
         return false;
     }
 
     public boolean isFulfillWithRequirements(Johnson vaccine) {
-        if(this.isGuidelineVaccinationComplete(vaccine)) {
-            if (this.isISameVaccineWichInitiated(Moderna.class.toString(), Pfizer.class.toString())) {
-                medicalHistory.add(vaccine.getClass().toString(), vaccine);
-                return true;
-            }
+        if (this.isISameVaccineWichInitiated(Moderna.class.getSimpleName(), Pfizer.class.getSimpleName())) {
+            medicalHistory.add(vaccine.getClass().getSimpleName(), vaccine);
+            return true;
         }
         return false;
     }
@@ -46,10 +41,6 @@ public class VaccinationAlghoritm {
 
     protected boolean isISameVaccineWichInitiated(String firstVaccineExcluded, String secondVaccineExcluded) {
         return !(medicalHistory.contains(firstVaccineExcluded) || medicalHistory.contains(secondVaccineExcluded));
-    }
-
-    protected boolean isGuidelineVaccinationComplete(Vaccine vaccine) {
-        return medicalHistory.sizeOfMedicalProcedure(vaccine.toString()) <= vaccine.getNecessaryVaccines();
     }
 
     protected boolean isTimeElapseToVaccinate(VaccineBiDose vaccine) {
