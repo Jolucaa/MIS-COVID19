@@ -1,6 +1,5 @@
 package utils;
 
-import java.io.IOException;
 
 /**
  * Write a description of class Console here.
@@ -8,14 +7,18 @@ import java.io.IOException;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Console<T> {
+public class Console {
     // instance variables - replace the example below with your own
     private static Console consoleInstance = null;
     private Output output;
     private Reader reader;
 
     public static Console getConsole() {
-        return consoleInstance == null ? new Console<>() : consoleInstance;
+        if (consoleInstance == null) {
+            consoleInstance = new Console();
+            return consoleInstance;
+        }
+        return consoleInstance;
     }
 
     /**
@@ -34,7 +37,7 @@ public class Console<T> {
         return reader;
     }
 
-    public void write(T generic) {
+    public void write(String generic) {
         this.getOutput().write(generic);
     }
 
@@ -42,24 +45,24 @@ public class Console<T> {
         this.getOutput().writeln();
     }
 
-    public String readString(T title) {
+    public String readString(String title) {
         try {
             this.write(title);
             this.writeln();
             return this.getReader().readString();
         } catch (Exception ioException) {
-            this.getConsole().writeErr(ioException);
+            this.writeErr(ioException);
         }
         return this.readString(title);
     }
 
-    public Integer readInteger(T title){
+    public Integer readInteger(String title) {
         try {
             this.write(title);
             this.writeln();
             return this.getReader().readInteger();
         } catch (Exception ioException) {
-            this.getConsole().writeErr(ioException);
+            this.writeErr(ioException);
         }
         return this.readInteger(title);
     }
@@ -68,13 +71,13 @@ public class Console<T> {
         this.getOutput().writeErr(exception);
     }
 
-    public Character readChar(T title){
+    public Character readChar(String title) {
         try {
             this.write(title);
             this.writeln();
             return this.getReader().readChar();
         } catch (Exception ioException) {
-            this.getConsole().writeErr(ioException);
+            this.writeErr(ioException);
         }
         return this.readChar(title);
     }
