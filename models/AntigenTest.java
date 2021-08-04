@@ -25,7 +25,7 @@ public abstract class AntigenTest extends DiagnosticTest {
                 } else {
                     this.setResult(false);
                 }
-                super.performMedicalProcedure();
+                return super.performMedicalProcedure();
             } else {
                 return new ErrorMedicalSampleNotCollected();
             }

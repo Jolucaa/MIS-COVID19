@@ -47,13 +47,13 @@ public abstract class MedicalProcedure {
         return this.getDateRealization() != null;
     }
 
-    public abstract boolean accept(MedicalProcedureVisitor medicalProcedureVisitor);
+    public abstract void accept(MedicalProcedureVisitor medicalProcedureVisitor);
 
     public MedicalProcedureManager getMedicalProcedureManager() {
         return medicalProcedureManager;
     }
 
-    public abstract DiagnosticTest identify(MedicalHistory medicalHistory);
+    public abstract DiagnosticTest diagnosticFamily(MedicalHistory medicalHistory);
 
     public abstract Vaccine vaccineFamily(MedicalHistory medicalHistory);
 }

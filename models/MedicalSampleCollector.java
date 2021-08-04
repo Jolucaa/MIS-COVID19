@@ -8,5 +8,5 @@ package models;
  */
 
 public interface MedicalSampleCollector {
-    void collect(DiagnosticTest DiagnosticTest);
+    void collect(DiagnosticTest diagnosticTest);
 }

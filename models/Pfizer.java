@@ -16,12 +16,12 @@ public class Pfizer extends VaccineBiDose {
     }
 
     @Override
-    public boolean accept(MedicalProcedureVisitor medicalProcedureVisitor) {
-        return medicalProcedureVisitor.visit(this);
+    public void accept(MedicalProcedureVisitor medicalProcedureVisitor) {
+        medicalProcedureVisitor.visit(this);
     }
 
     @Override
-    public DiagnosticTest identify(MedicalHistory medicalHistory) {
+    public DiagnosticTest diagnosticFamily(MedicalHistory medicalHistory) {
         return null;
     }
 

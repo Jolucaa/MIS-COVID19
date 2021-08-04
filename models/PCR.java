@@ -19,13 +19,13 @@ public class PCR extends DiagnosticTest {
     }
 
     @Override
-    public boolean accept(MedicalProcedureVisitor visitor) {
-        return visitor.visit(this);
+    public void accept(MedicalProcedureVisitor visitor) {
+        visitor.visit(this);
     }
 
     @Override
-    public DiagnosticTest identify(MedicalHistory medicalHistory) {
-        return medicalHistory.identify(this);
+    public DiagnosticTest diagnosticFamily(MedicalHistory medicalHistory) {
+        return medicalHistory.diagnosticFamily(this);
     }
 
     @Override
@@ -41,17 +41,11 @@ public class PCR extends DiagnosticTest {
         }else{
             this.setResult(false);
         }
-        super.performMedicalProcedure();
-        return this.isError();
+        return super.performMedicalProcedure();
     }
 
     @Override
-    protected ClinicError isError() {
-        return null;
-    }
-    @Override
-
-    public void collect(DiagnosticTest DiagnosticTest) {
+    public void collect(DiagnosticTest diagnosticTest) {
         this.setMedicalSample(this.getSampleType());
     }
 

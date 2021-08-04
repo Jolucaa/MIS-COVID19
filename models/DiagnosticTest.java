@@ -10,8 +10,8 @@ import java.util.Random;
  */
 public abstract class DiagnosticTest extends MedicalProcedure implements MedicalSampleCollector{
     private String medicalCenter;
-    private boolean result;
-    private Random random;
+    private Boolean result;
+    private final Random random;
     private DiagnosticTestAnalyzer diagnosticTestAnalyzer;
     private MedicalSample medicalSample;
 
@@ -53,10 +53,8 @@ public abstract class DiagnosticTest extends MedicalProcedure implements Medical
     @Override
     public ClinicError performMedicalProcedure() {
         this.setDateRealization(LocalDate.now());
-        return this.isError();
+        return null;
     }
-
-    protected abstract ClinicError isError();
 
     public String getMedicalCenter() {
         return medicalCenter;
@@ -71,7 +69,8 @@ public abstract class DiagnosticTest extends MedicalProcedure implements Medical
     }
 
 
-    protected void setResult(boolean result) {
+    protected void setResult(Boolean result) {
+        assert(result != null);
         this.result = result;
     }
 }

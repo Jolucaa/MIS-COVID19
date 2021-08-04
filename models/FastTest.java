@@ -15,18 +15,13 @@ public class FastTest extends AntigenTest {
     }
 
     @Override
-    protected ClinicError isError() {
-        return null;
+    public void accept(MedicalProcedureVisitor visitor) {
+        visitor.visit(this);
     }
 
     @Override
-    public boolean accept(MedicalProcedureVisitor visitor) {
-        return visitor.visit(this);
-    }
-
-    @Override
-    public DiagnosticTest identify(MedicalHistory medicalHistory) {
-        return medicalHistory.identify(this);
+    public DiagnosticTest diagnosticFamily(MedicalHistory medicalHistory) {
+        return medicalHistory.diagnosticFamily(this);
     }
 
     @Override
@@ -39,7 +34,7 @@ public class FastTest extends AntigenTest {
     }
 
     @Override
-    public void collect(DiagnosticTest DiagnosticTest) {
+    public void collect(DiagnosticTest diagnosticTest) {
         this.setMedicalSample(this.getMedicalSample());
     }
 }

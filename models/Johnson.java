@@ -7,7 +7,6 @@ package models;
  * @version (a version number or a date)
  */
 public class Johnson extends Vaccine {
-    private final Integer necessaryVaccines = VaccinationInformation.UNIQUE_NEEDED_VACCINES;
     /**
      * Constructor for objects of class Johnson
      */
@@ -16,12 +15,12 @@ public class Johnson extends Vaccine {
     }
 
     @Override
-    public boolean accept(MedicalProcedureVisitor medicalProcedureVisitor) {
-        return medicalProcedureVisitor.visit(this);
+    public void accept(MedicalProcedureVisitor medicalProcedureVisitor) {
+        medicalProcedureVisitor.visit(this);
     }
 
     @Override
-    public DiagnosticTest identify(MedicalHistory medicalHistory) {
+    public DiagnosticTest diagnosticFamily(MedicalHistory medicalHistory) {
         return null;
     }
 
@@ -37,7 +36,7 @@ public class Johnson extends Vaccine {
 
     @Override
     public Integer getNecessaryVaccines() {
-        return this.necessaryVaccines;
+        return VaccinationInformation.UNIQUE_NEEDED_VACCINES;
     }
 
     @Override

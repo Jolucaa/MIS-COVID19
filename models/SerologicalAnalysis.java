@@ -10,9 +10,9 @@ import utils.IntegerLimited;
  * @version (a version number or a date)
  */
 public class SerologicalAnalysis extends DiagnosticTest {
-    private final static int MIN_ANTIBODIES = 0;
-    private final static int MAX_ANTIBODIES = 10;
-    private final static int ALERT_ANTIBODIES = 2;
+    private static final Integer MIN_ANTIBODIES = 0;
+    private static final Integer MAX_ANTIBODIES = 10;
+    private static final Integer ALERT_ANTIBODIES = 2;
     private final IntegerLimited antibodies = new IntegerLimited(SerologicalAnalysis.MIN_ANTIBODIES, SerologicalAnalysis.MAX_ANTIBODIES);
 
     /**
@@ -23,13 +23,13 @@ public class SerologicalAnalysis extends DiagnosticTest {
     }
 
     @Override
-    public boolean accept(MedicalProcedureVisitor visitor) {
-        return visitor.visit(this);
+    public void accept(MedicalProcedureVisitor visitor) {
+        visitor.visit(this);
     }
 
     @Override
-    public DiagnosticTest identify(MedicalHistory medicalHistory) {
-        return medicalHistory.identify(this);
+    public DiagnosticTest diagnosticFamily(MedicalHistory medicalHistory) {
+        return medicalHistory.diagnosticFamily(this);
     }
 
     @Override
@@ -41,13 +41,7 @@ public class SerologicalAnalysis extends DiagnosticTest {
     public ClinicError performMedicalProcedure() {
         this.setResult(this.getAntibodies().set(this.getRandom().nextInt(SerologicalAnalysis.MAX_ANTIBODIES)) > SerologicalAnalysis.ALERT_ANTIBODIES);
         this.getReceptorMedicalProcedure().addToMedicalHistory(this);
-        super.performMedicalProcedure();
-        return this.isError();
-    }
-
-    @Override
-    protected ClinicError isError() {
-        return null;
+        return super.performMedicalProcedure();
     }
 
     public IntegerLimited getAntibodies() {
@@ -59,7 +53,7 @@ public class SerologicalAnalysis extends DiagnosticTest {
     }
 
     @Override
-    public void collect(DiagnosticTest DiagnosticTest) {
+    public void collect(DiagnosticTest diagnosticTest) {
         this.setMedicalSample(this.getSampleType());
     }
 }
