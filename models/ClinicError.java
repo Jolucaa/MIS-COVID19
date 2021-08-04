@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Clase con la finalidad de trabajar polimorficamente con ella
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public abstract class ClinicError {
     // instance variables - replace the example below with your own
     private ArrayList<ClinicError> errors = new ArrayList<>();
-    private String errorMessage;
+    private final String errorMessage;
 
     protected ClinicError(String errorMessage) {
         assert errorMessage != null;
@@ -30,7 +31,7 @@ public abstract class ClinicError {
         this.errors.add(error);
     }
 
-    protected ArrayList<ClinicError> getStackErrors() {
+    protected List<ClinicError> getStackErrors() {
         return this.errors;
     }
 
@@ -38,24 +39,18 @@ public abstract class ClinicError {
         return this.getStackErrors().get(this.getStackErrors().size());
     }
 
-    private ClinicError getError(Integer position) {
-        assert position != null;
-        assert position >= 0;
-        return this.getStackErrors().get(position);
-    }
-
     protected String getErrorMessage() {
         return this.errorMessage;
     }
 
     public String buildErrorTrace() {
-        String errorTrace = "";
+        StringBuilder errorTrace = new StringBuilder();
         while (!this.getStackErrors().isEmpty()) {
-            errorTrace += this.getError().getErrorMessage();
+            errorTrace.append(this.getError().getErrorMessage()).append("/n");
             this.remove();
             this.buildErrorTrace();
         }
-        return errorTrace;
+        return errorTrace.toString();
     }
 
     public void remove() {
