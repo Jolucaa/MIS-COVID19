@@ -2,7 +2,7 @@ package views;
 
 import controllers.ManagmentController;
 
-public class ManagmentView {
+public class ManagementInformationView {
     public void interact(ManagmentController managmentController) {
         managmentController.interact();
     }

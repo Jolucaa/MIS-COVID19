@@ -1,4 +1,4 @@
-import views.InitialView;
+import views.ConsoleView;
 import views.View;
 import views.ViewVisitor;
 
@@ -16,7 +16,7 @@ public class Clinica {
      * Init point of program
      */
     public static void main(String[] args) {
-        new Clinica(new InitialView(), new Logic()).start();
+        new Clinica(new ConsoleView(), new Logic()).start();
     }
 
     public Clinica(View view, Logic logic) {

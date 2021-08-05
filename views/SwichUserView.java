@@ -5,6 +5,7 @@ import models.Person;
 import utils.Console;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class SwichUserView extends ClinicView{
 
@@ -13,13 +14,9 @@ public class SwichUserView extends ClinicView{
     public void interact(SwitchUserController switchUserController) {
         this.switchUserController = switchUserController;
 
-        this.writeConsole("1 Administrador");
-        this.writeConsole("2 Tecnico");
-        this.writeConsole("3 Enfermero/a");
-        this.writeConsole("4 Paciente");
+        this.write();
 
         switch (Console.getConsole().readInteger("Selecciona un numero: ")) {
-            default:
             case 0:
                 this.switchUser(switchUserController.getAdministrator());
                 this.writeConsole(" Cambiado de tipo de usuaario a administrador satisfactoriamente");
@@ -30,30 +27,31 @@ public class SwichUserView extends ClinicView{
                 break;
             case 2:
                 this.showUserList(switchUserController.getNurseList());
-
                 this.writeConsole("Cambiado de tipo de usuaario a Enfermero/a  satisfactoriamente");
                 break;
             case 3:
                 this.showUserList(switchUserController.getPatientList());
                 this.writeConsole("Cambiado de tipo de usuaario a Paciente  satisfactoriamente");
                 break;
+            default:
+                this.restart(switchUserController);
         }
     }
 
-    private void showUserList(ArrayList personList) {
-        Iterator iterator = personList.iterator();
+    private void showUserList(List<? extends Person> personList) {
+        Iterator<? extends Person> iterator = personList.iterator();
         int personSelected = this.write(iterator);
-        this.switchUser((Person) personList.get(personSelected));
+        this.switchUser(personList.get(personSelected));
     }
 
     private void switchUser(Person person) {
         this.switchUserController.switchUser(person);
     }
 
-    private Integer write(Iterator iterator) {
+    private Integer write(Iterator<? extends Person> iterator) {
         int counter = 0;
         while (iterator.hasNext()) {
-            Person person = (Person) iterator.next();
+            Person person = iterator.next();
             this.writeConsole(counter++ + " " + person.getNameFormat());
         }
         return Console.getConsole().readInteger("Seleccione uno:");
@@ -61,7 +59,10 @@ public class SwichUserView extends ClinicView{
 
     @Override
     protected void write() {
-
+        this.writeConsole("1 Administrador");
+        this.writeConsole("2 Tecnico");
+        this.writeConsole("3 Enfermero/a");
+        this.writeConsole("4 Paciente");
     }
 
 }

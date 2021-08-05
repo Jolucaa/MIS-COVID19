@@ -1,8 +1,8 @@
 package controllers;
 
-import models.ClinicError;
 import models.Reception;
 import models.States;
+import views.ViewVisitor;
 
 
 /**
@@ -10,7 +10,7 @@ import models.States;
  *
  * @author: Date:
  */
-public abstract class Controller{
+public abstract class Controller implements ViewVisitor {
     private Reception reception;
 
     protected Controller(Reception reception) {
@@ -22,15 +22,12 @@ public abstract class Controller{
     };
 
     public void setState(States state){
-        this.getReception().setState(state);;
+        this.getReception().setState(state);
     }
 
     protected Reception getReception(){
         return this.reception;
     }
-
-
-    public abstract ClinicError control();
 
     public void exit(){
         this.setState(States.EXIT);

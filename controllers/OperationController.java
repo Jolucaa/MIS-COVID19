@@ -1,29 +1,21 @@
 package controllers;
-import models.ClinicError;
 import models.States;
-import views.ControllerViewVisitor;
+import views.MainView;
 import views.PresentationView;
 import models.Reception;
-import views.ViewVisitor;
 
-public class OperationController extends Controller implements ViewVisitor {
+public class OperationController extends Controller {
 
-    private UserManagementController userManagementController;
+    private ManagementUserController managementUserController;
     private ManagementProcedureController managementProcedureController;
     private ManagmentInformationController managmentInformationController;
 
     public OperationController(Reception reception) {
         super(reception);
-        this.userManagementController = new UserManagementController(this.getReception());
+        this.managementUserController = new ManagementUserController(this.getReception());
         this.managementProcedureController = new ManagementProcedureController(this.getReception());
         this.managmentInformationController = new ManagmentInformationController(this.getReception());
     }
-
-    @Override
-    public ClinicError control() {
-        return null;
-    }
-
     public void visit(PresentationView view) {
         view.visit(this);
     }
@@ -33,14 +25,14 @@ public class OperationController extends Controller implements ViewVisitor {
     }
 
     @Override
-    public void interact(ControllerViewVisitor visitor) {
+    public void interact(MainView visitor) {
         visitor.visit(this);
     }
 
 
-    public UserManagementController getUserManagementController() {
+    public ManagementUserController getUserManagementController() {
         this.setState(States.MANAGEMENT);
-        return userManagementController;
+        return managementUserController;
     }
 
     public ManagementProcedureController getManagementProcedureController() {

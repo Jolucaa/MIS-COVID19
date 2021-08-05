@@ -1,10 +1,11 @@
 package controllers;
 
 import models.*;
-import views.ControllerViewVisitor;
+import models.errors.ClinicError;
+import views.MainView;
 import views.ViewVisitor;
 
-public class UserManagementController extends Controller implements ViewVisitor {
+public class ManagementUserController extends Controller implements ViewVisitor {
     private CreateNurseController createNurseController;
     private SwitchUserController switchUserController;
     private AdminCreatorController adminCreatorController;
@@ -12,7 +13,7 @@ public class UserManagementController extends Controller implements ViewVisitor 
     private ManagementPatientController managementPatientController;
 
 
-    public UserManagementController(Reception reception) {
+    public ManagementUserController(Reception reception) {
         super(reception);
         this.switchUserController = new SwitchUserController(this.getReception());
         this.createNurseController = new CreateNurseController(this.getReception());
@@ -60,7 +61,7 @@ public class UserManagementController extends Controller implements ViewVisitor 
     }
 
     @Override
-    public void interact(ControllerViewVisitor viewVisitor) {
+    public void interact(MainView viewVisitor) {
         viewVisitor.visit(this);
     }
 }

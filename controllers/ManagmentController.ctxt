@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=ManagmentController
 comment1.params=view
-comment1.target=void\ visit(views.OperationalView)
+comment1.target=void\ visit(views.ManagementView)
 numComments=2

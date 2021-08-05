@@ -11,19 +11,18 @@ import views.ViewVisitor;
  */
 public class Logic{
 
-    private Reception reception;
-    private StartController startController;
-    private OperationController operationController;
-    private UserManagementController userManagementController;
-    private ManagmentInformationController managmentInformationController;
-    private ManagementProcedureController managementProcedureController;
-    private BackController backController;
+    private final Reception reception;
+    private final StartController startController;
+    private final OperationController operationController;
+    private final ManagementUserController managementUserController;
+    private final ManagmentInformationController managmentInformationController;
+    private final ManagementProcedureController managementProcedureController;
 
     public Logic() {
         this.reception = new Reception();
         this.startController = new StartController(reception);
         this.operationController = new OperationController(reception);
-        this.userManagementController = new UserManagementController(reception);
+        this.managementUserController = new ManagementUserController(reception);
         this.managmentInformationController = new ManagmentInformationController(reception);
         this.managementProcedureController = new ManagementProcedureController(reception);
     }
@@ -40,7 +39,7 @@ public class Logic{
             case STARTED:
                 return this.operationController;
             case MANAGEMENT:
-                return this.userManagementController;
+                return this.managementUserController;
             case MEDICAL_PROCESS:
                 return this.managementProcedureController;
             case SEARCH:

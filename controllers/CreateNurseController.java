@@ -1,10 +1,9 @@
 package controllers;
 
-
-import models.ClinicError;
-import models.ErrorAcces;
 import models.PersonalInformation;
 import models.Reception;
+import views.MainView;
+import views.PersonalInformationView;
 
 /**
  * Write a description of class CreateNurseController here.
@@ -22,14 +21,14 @@ public class CreateNurseController extends Controller
         super(reception);
     }
 
-    @Override
-    public ClinicError control() {
-        ErrorAcces error = null;
-
-        return error;
-    }
-
     public void create(PersonalInformation personalInformation){
         this.getReception().registerNurse(personalInformation);
     }
+
+    @Override
+    public void interact(MainView viewVisitor) {
+        viewVisitor.visit(this);
+    }
+
+
 }

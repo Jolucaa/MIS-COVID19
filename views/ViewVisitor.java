@@ -1,5 +1,5 @@
 package views;
 
-public interface ViewVisitor {
-    void interact(ControllerViewVisitor viewVisitor);
+public interface ViewVisitor{
+    void interact(MainView viewVisitor);
 }

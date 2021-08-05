@@ -2,6 +2,6 @@
 comment0.target=UserManagmentView
 comment1.params=
 comment1.target=UserManagmentView()
-comment2.params=userManagementController
-comment2.target=void\ interact(controllers.UserManagementController)
+comment2.params=managementUserController
+comment2.target=void\ interact(controllers.ManagementUserController)
 numComments=3

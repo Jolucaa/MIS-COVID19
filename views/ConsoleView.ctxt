@@ -1,13 +1,11 @@
 #BlueJ class context
-comment0.target=InitialView
+comment0.target=ConsoleView
 comment1.params=
-comment1.target=InitialView()
+comment1.target=ConsoleView()
 comment2.params=controller
 comment2.target=void\ interact(controllers.Controller)
 comment3.params=startController
 comment3.target=void\ visit(controllers.StartController)
 comment4.params=operationController
 comment4.target=void\ visit(controllers.OperationController)
-comment5.params=backController
-comment5.target=void\ visit(controllers.BackController)
-numComments=6
+numComments=5

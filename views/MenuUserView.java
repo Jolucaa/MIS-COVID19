@@ -6,7 +6,7 @@ public interface MenuUserView extends View{
 
     void visit(ManagmentTechnicianController managmentTechnicianController);
 
-    void visit(ManagmentNurseController managmentNurseController);
+    void visit(ManagementNurseController managmentNurseController);
 
-    void visit(UserManagementController userManagementController);
+    void visit(ManagementUserController managementUserController);
 }

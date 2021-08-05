@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=OperationalView
-comment1.params=userManagementController
-comment1.target=void\ visit(controllers.UserManagementController)
+comment1.params=managementUserController
+comment1.target=void\ visit(controllers.ManagementUserController)
 comment2.params=managmentController
 comment2.target=void\ visit(controllers.ManagmentController)
 comment3.params=managementProcedureController

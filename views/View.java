@@ -8,5 +8,5 @@ package views;
  * Se encarga de unificar el codigo repetido de las vistas especificas
  */
 public interface View{
-    void interact(ViewVisitor controller);
+    void interact(ViewVisitor viewVisitor);
 }

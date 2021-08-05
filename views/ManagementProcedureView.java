@@ -3,7 +3,7 @@ package views;
 import controllers.ManagementProcedureController;
 import models.Patient;
 
-public class ProceduresView extends ClinicView {
+public class ManagementProcedureView extends ClinicView {
 
     public void interact(ManagementProcedureController managementProcedureController) {
         new CreateVaccinationView().interact(managementProcedureController.getCreateVaccinationController());

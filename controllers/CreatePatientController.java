@@ -1,5 +1,5 @@
 package controllers;
-import models.ClinicError;
+import models.errors.ClinicError;
 import models.PersonalInformation;
 import models.Reception;
 

@@ -8,13 +8,13 @@ public class OperationView extends ClinicView{
         this.write();
         switch (this.getConsole().readInteger("Selecciona una opcion")){
             case 1:
-                new UserManagementView().interact(controller.getUserManagementController());
+                new ManagementUserView().interact(controller.getUserManagementController());
                 break;
             case 2:
-                new ProceduresView().interact(controller.getManagementProcedureController());
+                new ManagementProcedureView().interact(controller.getManagementProcedureController());
                 break;
             case 3:
-                new ManagmentView().interact(controller.getManagmentInformationController());
+                new ManagementInformationView().interact(controller.getManagmentInformationController());
                 break;
             case 4:
             default:

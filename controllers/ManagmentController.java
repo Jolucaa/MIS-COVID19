@@ -1,10 +1,10 @@
 package controllers;
 
-import views.OperationalView;
+import views.ManagementView;
 
 public interface ManagmentController {
 
-    void accept(OperationalView view);
+    void accept(ManagementView view);
 
     void interact();
 }

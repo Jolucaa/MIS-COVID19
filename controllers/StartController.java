@@ -1,10 +1,8 @@
 package controllers;
-import models.ClinicError;
-import views.ControllerViewVisitor;
+import views.MainView;
 import models.PersonalInformation;
 import models.Reception;
 import models.States;
-import views.ViewVisitor;
 
 /**
  * Write a description of class StartController here.
@@ -14,10 +12,10 @@ import views.ViewVisitor;
  * la clase se encarga de gestionar la logica de seleccion de actores
  * del sistema, pasando una lista de posibles actores a la vista
  */
-public class StartController extends Controller implements ViewVisitor {
+public class StartController extends Controller {
 
-    private UserManagementController userManagementController;
-    private BackController backController;
+    private ManagementUserController managementUserController;
+
 
     /**
      * Construcor generico para instanciar la clase y guardar el objeto
@@ -26,27 +24,19 @@ public class StartController extends Controller implements ViewVisitor {
      */
     public StartController(Reception reception) {
         super(reception);
-        this.userManagementController = new UserManagementController(reception);
-        this.backController = new BackController(reception);
-
+        this.managementUserController = new ManagementUserController(reception);
     }
-
-    @Override
-    public ClinicError control() {
-        return null;
-    }
-
 
     /**
      * acepta un objeto de tipo view para lanzarle un mensaje a continuacion
      *
-     * @param controllerViewVisitor una vista generica, a la que le pasamos
+     * @param mainView una vista generica, a la que le pasamos
      *             la instancia como parametro, para que
      *             el receptor sepa de que tipo de objeto se trata.
      */
     @Override
-    public void interact(ControllerViewVisitor controllerViewVisitor) {
-        controllerViewVisitor.visit(this);
+    public void interact(MainView mainView) {
+        mainView.visit(this);
     }
 
     /**
@@ -57,7 +47,7 @@ public class StartController extends Controller implements ViewVisitor {
     public void start(PersonalInformation personalInformation) {
         assert (this.getState() == States.INITIAL);
         this.generateFixtures();
-        this.getReception().setAdministrator(this.userManagementController.createAdmin(personalInformation));
+        this.getReception().setAdministrator(this.managementUserController.createAdmin(personalInformation));
         this.setState(States.STARTED);
     }
 
