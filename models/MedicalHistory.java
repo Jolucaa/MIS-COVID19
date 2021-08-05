@@ -1,5 +1,8 @@
 package models;
 
+import models.errors.ClinicError;
+import models.errors.ErrorVaccinationError;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,16 +14,20 @@ import java.util.List;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class MedicalHistory implements MedicalProcedureFamilyIdentificator {
+public class MedicalHistory implements MedicalProcedureVisitor {
     // instance variables - replace the example below with your own
     private HashMap<String, List<MedicalProcedure>> groupedMedicalProcedures;
     private Calendar calendar;
     private VaccinationAlgorithm vaccinationAlgorithm;
+    private DiagnosticFamily diagnosticFamily;
+    private VaccineFamily vaccineFamily;
 
     public MedicalHistory() {
         this.groupedMedicalProcedures = new HashMap<>();
         this.calendar = new Calendar();
         this.vaccinationAlgorithm = new VaccinationAlgorithm(this);
+        this.diagnosticFamily = new DiagnosticFamily();
+        this.vaccineFamily = new VaccineFamily();
     }
 
     /**
@@ -63,8 +70,12 @@ public class MedicalHistory implements MedicalProcedureFamilyIdentificator {
     }
 
     @Override
-    public void visit(Pfizer pfizer) {
-        this.getVaccinationAlgorithm().isFulfillWithRequirements(pfizer);
+    public ClinicError visit(Pfizer pfizer) {
+        ClinicError error = new ClinicError();
+        if(this.getVaccinationAlgorithm().isFulfillWithRequirements(pfizer)){
+            error.add(new ErrorVaccinationError());
+        }
+        return error;
     }
 
     private VaccinationAlgorithm getVaccinationAlgorithm() {
@@ -72,19 +83,27 @@ public class MedicalHistory implements MedicalProcedureFamilyIdentificator {
     }
 
     @Override
-    public void visit(Moderna moderna) {
-        this.getVaccinationAlgorithm().isFulfillWithRequirements(moderna);
+    public ClinicError visit(Moderna moderna) {
+        ClinicError error = new ClinicError();
+        if(this.getVaccinationAlgorithm().isFulfillWithRequirements(moderna)){
+            error.add(new ErrorVaccinationError());
+        }
+        return error;
     }
 
 
     @Override
-    public void visit(Johnson johnson) {
-        this.getVaccinationAlgorithm().isFulfillWithRequirements(johnson);
+    public ClinicError visit(Johnson johnson) {
+        ClinicError error = new ClinicError();
+        if(this.getVaccinationAlgorithm().isFulfillWithRequirements(johnson)){
+            error.add(new ErrorVaccinationError());
+        }
+        return error;
     }
 
     @Override
     public void visit(PCR pcr) {
-        this.add(pcr.getClass().toString(), pcr);
+        this.add(pcr.getClass().getSimpleName(), pcr);
 
     }
 
@@ -103,42 +122,6 @@ public class MedicalHistory implements MedicalProcedureFamilyIdentificator {
         this.add(fastTest.getClass().getSimpleName(), fastTest);
     }
 
-    @Override
-    public DiagnosticTest diagnosticFamily(PCR pcr) {
-        return pcr;
-    }
-
-    @Override
-    public DiagnosticTest diagnosticFamily(SerologicalAnalysis serologicalAnalysis) {
-        return serologicalAnalysis;
-    }
-
-    @Override
-    public DiagnosticTest diagnosticFamily(ClassicTest classicTest) {
-        return classicTest;
-    }
-
-    @Override
-    public DiagnosticTest diagnosticFamily(FastTest fastTest) {
-        return fastTest;
-    }
-
-    @Override
-    public Vaccine vaccineFamily(Pfizer pfizer) {
-        return pfizer;
-    }
-
-    @Override
-    public Vaccine vaccineFamily(Moderna moderna) {
-        return moderna;
-    }
-
-    @Override
-    public Vaccine vaccineFamily(Johnson johnson) {
-        return johnson;
-    }
-
-
     public List<Vaccine> getVaccineCanInject() {
         ArrayList<String> diagnosticClass = new ArrayList<>();
         ArrayList<Vaccine> diagnosticList = new ArrayList<>();
@@ -147,13 +130,20 @@ public class MedicalHistory implements MedicalProcedureFamilyIdentificator {
         diagnosticClass.add(Johnson.class.getSimpleName());
         for (String className : diagnosticClass) {
             for (MedicalProcedure medicalProcedure : this.getOneGroupOfHistory(className)) {
-                Vaccine vaccine = medicalProcedure.vaccineFamily(this);
-                if (vaccine != null) {
-                    diagnosticList.add(vaccine);
+                this.getVaccineFamily().accept(medicalProcedure);
+                if(this.getVaccineFamily().isBelongsFamily()) {
+                    Vaccine vaccine = this.getVaccineFamily().getAndRenewValue();
+                    if (vaccine != null) {
+                        diagnosticList.add(vaccine);
+                    }
                 }
             }
         }
         return diagnosticList;
+    }
+
+    private VaccineFamily getVaccineFamily() {
+        return vaccineFamily;
     }
 
     public List<DiagnosticTest> getDiagnosticsCanDo() {
@@ -164,14 +154,28 @@ public class MedicalHistory implements MedicalProcedureFamilyIdentificator {
         diagnosticClass.add(Johnson.class.getSimpleName());
         for (String className : diagnosticClass) {
             for (MedicalProcedure medicalProcedure : this.getOneGroupOfHistory(className)) {
-                DiagnosticTest procedureMedic = medicalProcedure.identify(this);
-                if (procedureMedic != null) {
-                    diagnosticList.add(procedureMedic);
+                this.getDiagnosticFamily().accept(medicalProcedure);
+                if(this.getDiagnosticFamily().isBelongsFamily()) {
+                        diagnosticList.add(this.getDiagnosticFamily().getAndRenewValue());
                 }
             }
 
         }
         return diagnosticList;
+    }
+
+    protected List<MedicalProcedure> getOneGroupOfHistory(String className) {
+        ArrayList<MedicalProcedure> elementsFind = new ArrayList<>();
+        if (!this.getGroupedProcedures().isEmpty()) {
+            if (this.getGroupedProcedures().containsKey(className)) {
+                return this.getGroupedProcedures().get(className);
+            }
+        }
+        return elementsFind;
+    }
+
+    private DiagnosticFamily getDiagnosticFamily() {
+        return diagnosticFamily;
     }
 
     public List<DiagnosticTest> searchLockdown() {
@@ -182,9 +186,12 @@ public class MedicalHistory implements MedicalProcedureFamilyIdentificator {
         diagnosticClass.add(ClassicTest.class.getSimpleName());
         for (String className : diagnosticClass) {
             for (MedicalProcedure medicalProcedure : this.getOneGroupOfHistory(className)) {
-                DiagnosticTest diagnosticTest = medicalProcedure.identify(this);
-                if (diagnosticTest.isPositive()) {
-                    diagnosticList.add(diagnosticTest);
+                this.getDiagnosticFamily().accept(medicalProcedure);
+                if(this.getDiagnosticFamily().isBelongsFamily()) {
+                    DiagnosticTest diagnosticTest = this.getDiagnosticFamily().getAndRenewValue();
+                    if (diagnosticTest.isPositive()) {
+                        diagnosticList.add(diagnosticTest);
+                    }
                 }
             }
         }
@@ -201,16 +208,6 @@ public class MedicalHistory implements MedicalProcedureFamilyIdentificator {
             }
         }
         return new ArrayList<>();
-    }
-
-    protected List<MedicalProcedure> getOneGroupOfHistory(String className) {
-        ArrayList<MedicalProcedure> elementsFind = new ArrayList<>();
-        if (!this.getGroupedProcedures().isEmpty()) {
-            if (this.getGroupedProcedures().containsKey(className)) {
-                return this.getGroupedProcedures().get(className);
-            }
-        }
-        return elementsFind;
     }
 
     public Integer searchInThatWeek(LocalDate date, Nurse nurse) {
@@ -235,11 +232,14 @@ public class MedicalHistory implements MedicalProcedureFamilyIdentificator {
     public Integer searchInThatWeek(LocalDate date, Technician technician) {
         Integer numberOfProceduresInOneWeek = 0;
         for (MedicalProcedure medicalProcedure : this.searchInHistory()) {
-            DiagnosticTest diagnosticTest = medicalProcedure.identify(this);
-            if (diagnosticTest.getDiagnosticTestAnalyzer() == technician) {
-                if (this.isInSameWeek(medicalProcedure.getDateAssigned(), date)
-                        || this.isInSameWeek(medicalProcedure.getDateRealization(), date)) {
-                    numberOfProceduresInOneWeek++;
+            this.getDiagnosticFamily().accept(medicalProcedure);
+            if(this.getDiagnosticFamily().isBelongsFamily()) {
+                DiagnosticTest diagnosticTest = this.getDiagnosticFamily().getAndRenewValue();
+                if (diagnosticTest.getDiagnosticTestAnalyzer() == technician) {
+                    if (this.isInSameWeek(medicalProcedure.getDateAssigned(), date)
+                            || this.isInSameWeek(medicalProcedure.getDateRealization(), date)) {
+                        numberOfProceduresInOneWeek++;
+                    }
                 }
             }
         }

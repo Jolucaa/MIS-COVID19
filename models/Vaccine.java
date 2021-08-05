@@ -1,7 +1,8 @@
 package models;
 
+import models.errors.ClinicError;
+
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * Abstract class Vaccine - write a description of the class here
@@ -17,8 +18,9 @@ public abstract class Vaccine extends MedicalProcedure implements Article {
     }
 
     public ClinicError performMedicalProcedure() {
-        ClinicError error = this.performVaccination();
-        if(error != null) {
+        ClinicError error = new ClinicError();
+        error.add(this.performVaccination());
+        if(error.isStackEmpty()) {
             this.setDateRealization(LocalDate.now());
             if (this.isCompleteVaccinationGuideline()) {
                 this.subtractVaccineDose();
@@ -27,11 +29,17 @@ public abstract class Vaccine extends MedicalProcedure implements Article {
         return error;
     }
 
+
+    @Override
+    public void identifyFamily(IdentifierGenericFamily vaccineFamily){
+        vaccineFamily.identify(this);
+    }
+
     protected abstract ClinicError performVaccination();
 
     protected abstract void subtractVaccineDose();
 
-    protected abstract boolean canBeVaccinated();
+    protected abstract ClinicError canBeVaccinated();
 
     public abstract void accept(MedicalVaccineVisitor visitor);
 

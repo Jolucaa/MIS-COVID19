@@ -11,8 +11,6 @@ public interface ControllerVisitor {
 
      void visit(StartController controller);
 
-     void visit(BackController controller);
-
      void visit(AdminCreatorController controller);
 
      void visit(CreatePatientController controller);

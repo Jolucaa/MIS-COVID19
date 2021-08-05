@@ -8,18 +8,8 @@ public abstract class GenericManager<T> {
 
     public void register(T object) {
         if (!this.isRegistered(object)) {
-            Console.getConsole().write("registrado " + object.getClass().getName());
-            Console.getConsole().writeln();
-            Console.getConsole().write("registrado " + object.getClass().toString());
-            Console.getConsole().writeln();
-            Console.getConsole().write("registrado " + object.getClass().getSimpleName());
-            Console.getConsole().writeln();
-            Console.getConsole().write("registrado " + object.getClass().getCanonicalName());
-            Console.getConsole().writeln();
             this.getArrayList().add(this.create(this.getPersonalInformation(object)));
         } else {
-            Console.getConsole().write("edicion " + object.getClass().getName());
-            Console.getConsole().writeln();
             this.edit(this.getId(object));
         }
     }

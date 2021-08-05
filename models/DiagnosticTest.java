@@ -1,5 +1,7 @@
 package models;
 
+import models.errors.ClinicError;
+
 import java.time.LocalDate;
 import java.util.Random;
 
@@ -18,6 +20,11 @@ public abstract class DiagnosticTest extends MedicalProcedure implements Medical
     protected DiagnosticTest(ReceptorMedicalProcedure receptorMedicalProcedure, MedicalProcedureManager medicalProcedureManager) {
         super(receptorMedicalProcedure, medicalProcedureManager);
         random = new Random();
+    }
+
+    @Override
+    public void identifyFamily(IdentifierGenericFamily diagnosticFamily){
+        diagnosticFamily.identify(this);
     }
 
     public void collectMedicalSample(MedicalSampleCollector collector) {

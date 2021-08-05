@@ -1,5 +1,7 @@
 package models;
 
+import models.errors.ClinicError;
+
 import java.time.LocalDate;
 
 /**
@@ -10,7 +12,7 @@ import java.time.LocalDate;
  */
 
 public abstract class MedicalProcedure {
-    private LocalDate dateAssigned;
+    private final LocalDate dateAssigned;
     private LocalDate dateRealization;
     private ReceptorMedicalProcedure receptorMedicalProcedure;
     private MedicalProcedureManager medicalProcedureManager;
@@ -43,17 +45,11 @@ public abstract class MedicalProcedure {
         this.dateRealization = dateRealization;
     }
 
-    protected boolean isFinished() {
-        return this.getDateRealization() != null;
-    }
-
-    public abstract void accept(MedicalProcedureVisitor medicalProcedureVisitor);
+    public abstract ClinicError accept(MedicalProcedureVisitor medicalProcedureVisitor);
 
     public MedicalProcedureManager getMedicalProcedureManager() {
         return medicalProcedureManager;
     }
 
-    public abstract DiagnosticTest diagnosticFamily(MedicalHistory medicalHistory);
-
-    public abstract Vaccine vaccineFamily(MedicalHistory medicalHistory);
+    public abstract void identifyFamily(IdentifierGenericFamily identifierGenericFamily);
 }

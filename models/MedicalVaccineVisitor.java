@@ -1,5 +1,7 @@
 package models;
 
+import models.errors.ClinicError;
+
 /**
  * Write a description of interface MedicalVaccineVisitor here.
  *
@@ -9,10 +11,10 @@ package models;
 
 public interface MedicalVaccineVisitor {
 
-     void visit(Pfizer pfizer);
+     ClinicError visit(Pfizer pfizer);
 
-     void visit(Moderna moderna);
+     ClinicError visit(Moderna moderna);
 
-     void visit(Johnson johnson);
+     ClinicError visit(Johnson johnson);
 
 }

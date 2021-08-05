@@ -1,7 +1,10 @@
 package models;
 
+import models.errors.ClinicError;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Write a description of class Patient here.
@@ -42,7 +45,7 @@ public class Patient extends Person implements ReceptorMedicalProcedure {
         return !this.searchLockdown().isEmpty();
     }
 
-    protected ArrayList<DiagnosticTest> searchLockdown() {
+    protected List<DiagnosticTest> searchLockdown() {
         return getMedicalHistory().searchLockdown();
     }
 
@@ -61,8 +64,10 @@ public class Patient extends Person implements ReceptorMedicalProcedure {
     }
 
     @Override
-    public boolean isFulfillWithRequirements(Vaccine vaccine) {
-        return vaccine.accept(this.getMedicalHistory());
+    public ClinicError isFulfillWithRequirements(Vaccine vaccine) {
+        ClinicError error = new ClinicError();
+         error.add(vaccine.accept(this.getMedicalHistory()));
+         return error;
     }
 
     public Integer getProcedureInWeekWith(Nurse nurse, LocalDate date) {
@@ -73,27 +78,23 @@ public class Patient extends Person implements ReceptorMedicalProcedure {
         return this.getMedicalHistory().searchInThatWeek(date, technician);
     }
 
-    public ArrayList<Vaccine> getVaccineCanInject() {
+    public List<Vaccine> getVaccineCanInject() {
         return this.getMedicalHistory().getVaccineCanInject();
     }
 
-    public Integer elapsedTimeConfined(){
-       return this.getMedicalHistory().elapsedTimeConfined();
+    public Integer elapsedTimeConfined() {
+        return this.getMedicalHistory().elapsedTimeConfined();
     }
 
-    public ArrayList<MedicalProcedure> getMedicalProcessForPatient(){
+    public List<MedicalProcedure> getMedicalProcessForPatient() {
         ArrayList<MedicalProcedure> listOfProcedures = new ArrayList<>();
-        try {
-            listOfProcedures.addAll(this.getMedicalHistory().getVaccineCanInject());
-            listOfProcedures.addAll(this.getMedicalHistory().getDiagnosticsCanDo());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
+        listOfProcedures.addAll(this.getVaccineCanInject());
+        listOfProcedures.addAll(this.getDiagnosticsCanDo());
         return listOfProcedures;
     }
+
+    public List<DiagnosticTest> getDiagnosticsCanDo() {
+        return this.getMedicalHistory().getDiagnosticsCanDo();
+    }
+
 }

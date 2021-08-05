@@ -1,5 +1,9 @@
 package models;
 
+import models.errors.ClinicError;
+import models.errors.ErrorDiagnosticAnalyzerNotSet;
+import models.errors.ErrorMedicalSampleNotCollected;
+
 /**
  * Abstract class PruebasAntigenos - write a description of the class here
  *

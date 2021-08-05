@@ -1,5 +1,8 @@
 package models;
 
+import models.errors.ClinicError;
+import models.errors.ErrorVaccinationError;
+
 /**
  * Write a description of class Moderna here.
  *
@@ -16,18 +19,8 @@ public class Moderna extends VaccineBiDose {
     }
 
     @Override
-    public void accept(MedicalProcedureVisitor medicalProcedureVisitor) {
-        medicalProcedureVisitor.visit(this);
-    }
-
-    @Override
-    public DiagnosticTest diagnosticFamily(MedicalHistory medicalHistory) {
-        return null;
-    }
-
-    @Override
-    public Vaccine vaccineFamily(MedicalHistory medicalHistory) {
-        return this;
+    public ClinicError accept(MedicalProcedureVisitor medicalProcedureVisitor) {
+        return medicalProcedureVisitor.visit(this);
     }
 
     @Override
@@ -42,15 +35,17 @@ public class Moderna extends VaccineBiDose {
 
     @Override
     protected ClinicError performVaccination() {
-        if(this.canBeVaccinated()) {
+        ClinicError error = this.canBeVaccinated();
+        if(error.isStackEmpty()) {
             this.getReceptorMedicalProcedure().addToMedicalHistory(this);
-            return null;
+            return error;
         }
-        return new ErrorVaccinationError();
+        error.add(new ErrorVaccinationError());
+        return error;
     }
 
     @Override
-    protected boolean canBeVaccinated() {
+    protected ClinicError canBeVaccinated() {
         return this.getReceptorMedicalProcedure().isFulfillWithRequirements(this);
     }
 

@@ -1,5 +1,6 @@
 package models;
 
+import models.errors.ClinicError;
 import utils.IntegerLimited;
 
 
@@ -23,17 +24,8 @@ public class SerologicalAnalysis extends DiagnosticTest {
     }
 
     @Override
-    public void accept(MedicalProcedureVisitor visitor) {
+    public ClinicError accept(MedicalProcedureVisitor visitor) {
         visitor.visit(this);
-    }
-
-    @Override
-    public DiagnosticTest diagnosticFamily(MedicalHistory medicalHistory) {
-        return medicalHistory.diagnosticFamily(this);
-    }
-
-    @Override
-    public Vaccine vaccineFamily(MedicalHistory medicalHistory) {
         return null;
     }
 

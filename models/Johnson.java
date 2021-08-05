@@ -1,5 +1,8 @@
 package models;
 
+import models.errors.ClinicError;
+import models.errors.ErrorVaccinationError;
+
 /**
  * Write a description of class Johnson here.
  *
@@ -15,18 +18,8 @@ public class Johnson extends Vaccine {
     }
 
     @Override
-    public void accept(MedicalProcedureVisitor medicalProcedureVisitor) {
-        medicalProcedureVisitor.visit(this);
-    }
-
-    @Override
-    public DiagnosticTest diagnosticFamily(MedicalHistory medicalHistory) {
-        return null;
-    }
-
-    @Override
-    public Vaccine vaccineFamily(MedicalHistory medicalHistory) {
-        return medicalHistory.vaccineFamily(this);
+    public ClinicError accept(MedicalProcedureVisitor medicalProcedureVisitor) {
+         return medicalProcedureVisitor.visit(this);
     }
 
     @Override
@@ -41,11 +34,13 @@ public class Johnson extends Vaccine {
 
     @Override
     public ClinicError performVaccination() {
-        if(this.canBeVaccinated()) {
+        ClinicError error = this.canBeVaccinated();
+        if(error.isStackEmpty()) {
             this.getReceptorMedicalProcedure().addToMedicalHistory(this);
-            return null;
+            return error;
         }
-        return new ErrorVaccinationError();
+        error.add(new ErrorVaccinationError());
+        return error;
     }
 
     @Override
@@ -62,7 +57,7 @@ public class Johnson extends Vaccine {
     }
 
     @Override
-    protected boolean canBeVaccinated() {
+    protected ClinicError canBeVaccinated() {
         return this.getReceptorMedicalProcedure().isFulfillWithRequirements(this);
     }
 

@@ -1,5 +1,7 @@
 package models;
 
+import models.errors.ClinicError;
+
 /**
  * Write a description of interface ReceptorMedicalProcedure here.
  *
@@ -9,7 +11,7 @@ package models;
 
 public interface ReceptorMedicalProcedure{
 
-    boolean isFulfillWithRequirements(Vaccine vaccine);
+    ClinicError isFulfillWithRequirements(Vaccine vaccine);
 
     Integer getVaccineDoseInjected(String className);
 

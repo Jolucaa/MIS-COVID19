@@ -32,7 +32,7 @@ public class Reception {
     }
 
     public List<Nurse> getNursesAvailables() {
-        return this.getAdministrator().getNurseManager().getNursesAvailables();
+        return this.getAdministrator().getNurseManager().getNursesAvailable();
     }
 
     public List<Technician> getTechnicianAvailables() {
