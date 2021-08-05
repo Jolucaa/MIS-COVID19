@@ -1,9 +1,13 @@
 package controllers;
-import models.ClinicError;
-import views.ControllerViewVisitor;
-import views.OperationalView;
+import models.MedicalProcedure;
+import models.errors.ClinicError;
+import models.errors.ErrorPatientWithoutProcedures;
+import views.MainView;
+import views.ManagementView;
 import models.Reception;
 import views.ViewVisitor;
+
+import java.util.List;
 
 /**
  * Write a description of class ManagementProcedureController here.
@@ -23,7 +27,7 @@ public class ManagementProcedureController extends Controller implements Managme
         this.createVaccinationController = new CreateVaccinationController(this.getReception());
     }
 
-    public void accept(OperationalView view) {
+    public void accept(ManagementView view) {
         view.visit(this);
     }
 
@@ -38,12 +42,17 @@ public class ManagementProcedureController extends Controller implements Managme
      *
      */
     public ClinicError control() {
-        this.getReception().getMedicalProcessForPatient(this.getReception().getPatientList().get(0));
-        return null;
+        ClinicError error = new ClinicError();
+        List<MedicalProcedure> proceduresOfPatient =
+                this.getReception().getMedicalProcessForPatient(this.getReception().getPatientList().get(0));
+        if(proceduresOfPatient.isEmpty()){
+            error.add(new ErrorPatientWithoutProcedures());
+        }
+        return error;
     }
 
     @Override
-    public void interact(ControllerViewVisitor viewVisitor) {
+    public void interact(MainView viewVisitor) {
         viewVisitor.visit(this);
     }
 

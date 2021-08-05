@@ -1,20 +1,14 @@
 package models;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Reception {
 
     private Administrator administrator;
     private States states ;
-    private Security security;
 
     public Reception() {
         this.states = States.INITIAL;
-        this.security = new Security();
-    }
-
-    public boolean isUserGrantied(Person user,String cllassName){
-        return this.security.isPermissions(user, cllassName);
     }
 
     public void setAdministrator(Administrator administrator){
@@ -37,11 +31,11 @@ public class Reception {
         return administrator;
     }
 
-    public ArrayList<Nurse> getNursesAvailables() {
+    public List<Nurse> getNursesAvailables() {
         return this.getAdministrator().getNurseManager().getNursesAvailables();
     }
 
-    public ArrayList<Technician> getTechnicianAvailables() {
+    public List<Technician> getTechnicianAvailables() {
         return this.getAdministrator().getTechnicianManager().getTechniciansAvailables();
     }
 
@@ -53,19 +47,27 @@ public class Reception {
         this.states = state;
     }
 
-    public ArrayList<Technician> getTechnicianList(){
+    public List<Technician> getTechnicianList(){
         return this.getAdministrator().getTechnicianManager().getArrayList();
     }
 
-    public ArrayList<Patient> getPatientList(){
+    public List<Patient> getPatientList(){
         return this.getAdministrator().getPatientManager().getArrayList();
     }
 
-    public ArrayList<Nurse> getNurseList(){
+    public List<Nurse> getNurseList(){
         return this.getAdministrator().getNurseManager().getArrayList();
     }
 
-    public ArrayList<MedicalProcedure> getMedicalProcessForPatient(Patient patient){
+    public List<MedicalProcedure> getMedicalProcessForPatient(Patient patient){
        return patient.getMedicalProcessForPatient();
+    }
+
+    public List<Vaccine> getVaccineCanInject(Patient patient){
+        return patient.getVaccineCanInject();
+    }
+
+    public List<DiagnosticTest> getDiagnosticsCanDo(Patient patient){
+        return patient.getDiagnosticsCanDo();
     }
 }
