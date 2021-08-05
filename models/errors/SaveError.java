@@ -1,4 +1,6 @@
-package models;
+package models.errors;
+
+import models.errors.ClinicError;
 
 /**
  * Write a description of class ErrorGurdado here.

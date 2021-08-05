@@ -1,4 +1,4 @@
-package models;
+package models.errors;
 
 import java.util.ArrayList;
 import java.util.List;

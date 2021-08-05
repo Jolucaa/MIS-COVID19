@@ -1,4 +1,4 @@
-package models;
+package models.errors;
 
 /**
  * Write a description of class ErrorNumeroLimitado here.
@@ -6,11 +6,11 @@ package models;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class LimitedIntError extends ClinicError {
+public class ErrorIntegerOutOfBounds extends ClinicError {
     /**
      * Constructor for objects of class ErrorNumeroLimitado
      */
-    public LimitedIntError() {
+    public ErrorIntegerOutOfBounds() {
         super("Error numero fuera de los limites: ");
     }
 }

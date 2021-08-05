@@ -1,4 +1,4 @@
-package models;
+package models.errors;
 
 public class ErrorMedicalSampleNotCollected extends ClinicError{
     protected ErrorMedicalSampleNotCollected() {
