@@ -11,10 +11,14 @@ import java.util.List;
  *
  * @author: Date:
  */
-public abstract class ClinicError {
+public class ClinicError {
     // instance variables - replace the example below with your own
     private ArrayList<ClinicError> errors = new ArrayList<>();
-    private final String errorMessage;
+    private String errorMessage;
+
+    public ClinicError() {
+        this.errorMessage = "";
+    }
 
     protected ClinicError(String errorMessage) {
         assert errorMessage != null;
@@ -26,9 +30,10 @@ public abstract class ClinicError {
         this.add(this);
     }
 
-    protected void add(ClinicError error) {
-        assert error != null;
-        this.errors.add(error);
+    public void add(ClinicError error) {
+        if(error != null) {
+            this.errors.add(error);
+        }
     }
 
     protected List<ClinicError> getStackErrors() {
@@ -55,5 +60,9 @@ public abstract class ClinicError {
 
     public void remove() {
         this.getStackErrors().remove(this.getError());
+    }
+
+    public boolean isStackEmpty(){
+        return this.getStackErrors().size() == 0;
     }
 }

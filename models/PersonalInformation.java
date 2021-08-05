@@ -1,5 +1,8 @@
 package models;
 
+import models.errors.ClinicError;
+import models.errors.ErrorFieldCantBeBlank;
+import models.errors.ErrorIntegerOutOfBounds;
 import utils.IntegerLimited;
 
 /**
@@ -12,6 +15,16 @@ public class PersonalInformation {
     private String name;
     private String surname;
     private Integer phone;
+    private IntegerLimited integerLimited;
+
+    /**
+     * Constructor for objects of class PersonalInformation
+     *  that is build with empty parameters
+     *
+     */
+    public PersonalInformation() {
+        this.integerLimited = new IntegerLimited(9, 9);
+    }
 
     /**
      * Constructor for objects of class PersonalInformation
@@ -24,6 +37,7 @@ public class PersonalInformation {
         this.setName(name);
         this.setSurname(surname);
         this.setPhone(phone);
+        this.integerLimited = new IntegerLimited(9, 9);
     }
 
     /**
@@ -32,7 +46,11 @@ public class PersonalInformation {
      * @return boolean  true si el campo esta en el intervalo
      */
     public boolean isValidPhone(Integer phone) {
-        return new IntegerLimited(9, 9).set(phone) != null;
+        return this.getIntegerLimited().set(phone) != null;
+    }
+
+    public IntegerLimited getIntegerLimited() {
+        return integerLimited;
     }
 
     /**
@@ -77,9 +95,12 @@ public class PersonalInformation {
      *
      * @param phone Integer
      */
-    public void setPhone(Integer phone) {
-        assert (this.isValidPhone(phone));
-        this.phone = phone;
+    public ClinicError setPhone(Integer phone) {
+        if(this.isValidPhone(phone)){
+            this.phone = phone;
+            return null;
+        }
+        return new ErrorIntegerOutOfBounds();
     }
 
     /**
@@ -87,9 +108,12 @@ public class PersonalInformation {
      *
      * @param name String
      */
-    public void setName(String name) {
-        assert (name != null);
-        this.name = name;
+    public ClinicError setName(String name) {
+        if (name != null && !name.isEmpty()) {
+            this.name = name;
+            return null;
+        }
+        return new ErrorFieldCantBeBlank();
     }
 
     /**
@@ -97,8 +121,11 @@ public class PersonalInformation {
      *
      * @param surname String
      */
-    public void setSurname(String surname) {
-        assert (surname != null);
-        this.surname = surname;
+    public ClinicError setSurname(String surname) {
+        if(surname != null && !surname.isEmpty()) {
+            this.surname = surname;
+            return null;
+        }
+        return new ErrorFieldCantBeBlank();
     }
 }
