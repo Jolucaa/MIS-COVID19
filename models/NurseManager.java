@@ -37,7 +37,7 @@ public class NurseManager extends GenericManager<Nurse> {
         return new Nurse(personalInformation);
     }
 
-    public ArrayList<Nurse> getNursesAvailables(){
+    public ArrayList<Nurse> getNursesAvailable(){
         ArrayList<Nurse> nursesAvailable = new ArrayList<>();
         for(Nurse nurse:this.getArrayList()){
             if(nurse.isNurseAvailable()){
