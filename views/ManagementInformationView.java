@@ -1,9 +1,9 @@
 package views;
 
-import controllers.ManagmentController;
+import controllers.ManagementController;
 
 public class ManagementInformationView {
-    public void interact(ManagmentController managmentController) {
-        managmentController.interact();
+    public void interact(ManagementController managementController) {
+        managementController.interact();
     }
 }

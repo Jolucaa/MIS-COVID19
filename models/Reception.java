@@ -6,17 +6,40 @@ public class Reception {
 
     private Administrator administrator;
     private States states ;
+    private Session session;
 
     public Reception() {
         this.states = States.INITIAL;
+        this.session = new Session();
     }
+
+    public States getStates() {
+        return states;
+    }
+
+    public void setStates(States states) {
+        this.states = states;
+    }
+
+    public void setUser(User user){
+        this.getSession().setUser(user);
+    }
+
+    public User getUser(){
+       return this.getSession().getUser();
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
 
     public void setAdministrator(Administrator administrator){
         this.administrator = administrator;
     }
 
-    public void registerPatient(PersonalInformation personalInformation,Integer age, Integer SIP) {
-        this.getAdministrator().register(this.getAdministrator().createPatient(personalInformation,age,SIP));
+    public void registerPatient(PersonalInformation personalInformation,Integer SIP) {
+        this.getAdministrator().register(this.getAdministrator().createPatient(personalInformation,SIP));
     }
 
     public void registerTechnician(PersonalInformation personalInformation) {
@@ -31,7 +54,7 @@ public class Reception {
         return administrator;
     }
 
-    public List<Nurse> getNursesAvailables() {
+    public List<Nurse> getNursesAvailable() {
         return this.getAdministrator().getNurseManager().getNursesAvailable();
     }
 

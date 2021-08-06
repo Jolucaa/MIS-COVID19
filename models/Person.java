@@ -5,9 +5,9 @@ package models;
  *
  * @author: Date:
  */
-public abstract class Person {
+public abstract class Person implements User{
     // instance variables - replace the example below with your own
-    protected PersonalInformation information;
+    private PersonalInformation information;
 
     protected Person(PersonalInformation information) {
         this.information = information;
@@ -41,7 +41,7 @@ public abstract class Person {
      *
      * @return String  El nombre de la persona
      */
-    protected String getName() {
+    public String getName() {
         return this.getPersonalInformation().getName();
     }
 
@@ -50,7 +50,7 @@ public abstract class Person {
      *
      * @return String  El appellido de la persona
      */
-    protected String getSurname() {
+    public String getSurname() {
         return this.getPersonalInformation().getSurname();
     }
 
@@ -88,5 +88,11 @@ public abstract class Person {
      */
     public void setSurname(String surname) {
         this.getPersonalInformation().setSurname(surname);
+    }
+
+    public abstract Integer getId();
+
+    public Integer getAge(){
+        return this.getPersonalInformation().getAge();
     }
 }

@@ -19,6 +19,11 @@ public class Technician extends MedicalEmployee implements DiagnosticTestAnalyze
     }
 
     @Override
+    public Integer getId() {
+        return this.getCollegiateNumber();
+    }
+
+    @Override
     public void visit(PCR pcr) {
 
     }

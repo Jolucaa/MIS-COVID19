@@ -53,8 +53,8 @@ public abstract class UserManager extends Employee {
         this.getPatientManager().register(patient);
     }
 
-    public Patient createPatient(PersonalInformation personalInformation, Integer age, Integer SIP) {
-        return this.getPatientManager().create(personalInformation, age, SIP);
+    public Patient createPatient(PersonalInformation personalInformation, Integer SIP) {
+        return this.getPatientManager().create(personalInformation, SIP);
     }
 
     public void add(Technician technician) {

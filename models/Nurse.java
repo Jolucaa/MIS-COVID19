@@ -1,5 +1,7 @@
 package models;
 
+import models.errors.ClinicError;
+
 import java.time.LocalDate;
 
 /**
@@ -8,13 +10,18 @@ import java.time.LocalDate;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Nurse extends MedicalEmployee implements MedicalProcedureManager, MedicalVaccineVisitor {
+public class Nurse extends MedicalEmployee implements MedicalProcedureManager, MedicalVaccineVisitor, User {
     private final Integer MAXIM_NUMBER_PROCEDURES_FOR_WEEK = 5;
     /**
      * Constructor for objects of class Nurse
      */
     public Nurse(PersonalInformation personalInformation) {
         super(personalInformation);
+    }
+
+    @Override
+    public Integer getId() {
+        return this.getCollegiateNumber();
     }
 
     public boolean isNurseAvailable(){
@@ -33,18 +40,21 @@ public class Nurse extends MedicalEmployee implements MedicalProcedureManager, M
     }
 
     @Override
-    public void visit(Pfizer pfizer) {
+    public ClinicError visit(Pfizer pfizer) {
 
+        return null;
     }
 
     @Override
-    public void visit(Moderna moderna) {
+    public ClinicError visit(Moderna moderna) {
 
+        return null;
     }
 
     @Override
-    public void visit(Johnson johnson) {
+    public ClinicError visit(Johnson johnson) {
 
+        return null;
     }
 
     @Override

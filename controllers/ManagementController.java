@@ -2,7 +2,7 @@ package controllers;
 
 import views.ManagementView;
 
-public interface ManagmentController {
+public interface ManagementController {
 
     void accept(ManagementView view);
 

@@ -5,6 +5,7 @@ import models.errors.ClinicError;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Write a description of class Patient here.
@@ -13,24 +14,31 @@ import java.util.List;
  * @version (a version number or a date)
  */
 public class Patient extends Person implements ReceptorMedicalProcedure {
-    // instance variables - replace the example below with your own
+
+    private static Integer numInstance = 0;
     private final MedicalHistory medicalHistory;
-    private Integer age;
+    private final Random random = new Random();
+    private Integer identifier;
     private Integer SIP;
 
     /**
      * Constructor for objects of class Patient
      */
-    public Patient(PersonalInformation personalInformation, Integer age, Integer SIP) {
+    public Patient(PersonalInformation personalInformation) {
         super(personalInformation);
         medicalHistory = new MedicalHistory();
-        this.age = age;
+        this.SIP = this.random.nextInt(7);
+        this.identifier = Patient.numInstance++;
+    }
+
+    /**
+     * Constructor for objects of class Patient
+     */
+    public Patient(PersonalInformation personalInformation, Integer SIP) {
+        this(personalInformation);
         this.SIP = SIP;
     }
 
-    public Integer getAge() {
-        return age;
-    }
 
     public Integer getSIP() {
         return SIP;
@@ -97,4 +105,8 @@ public class Patient extends Person implements ReceptorMedicalProcedure {
         return this.getMedicalHistory().getDiagnosticsCanDo();
     }
 
+    @Override
+    public Integer getId() {
+        return this.identifier;
+    }
 }

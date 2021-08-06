@@ -38,12 +38,11 @@ public class PatientManager extends GenericManager<Patient> {
 
     @Override
     public Patient create(PersonalInformation personalInformation) {
-        Random randomGenerator = new Random();
-        return this.create(personalInformation, randomGenerator.nextInt(2), randomGenerator.nextInt(7));
+        return new Patient(personalInformation);
     }
 
-    public Patient create(PersonalInformation personalInformation, Integer age, Integer SIP) {
-        return new Patient(personalInformation, age, SIP);
+    public Patient create(PersonalInformation personalInformation, Integer SIP) {
+        return new Patient(personalInformation, SIP);
     }
     
     public boolean isPriorityPatient(){

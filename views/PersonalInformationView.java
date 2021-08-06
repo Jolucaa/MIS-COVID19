@@ -8,10 +8,11 @@ import utils.Console;
 public class PersonalInformationView extends ClinicView{
     public PersonalInformation interact(PersonalInformationController personalInformationController){
         this.write();
-        String name = this.getConsole().readString("Introduce un nombre: ");
-        String surname = this.getConsole().readString("Introduce un apellido: ");
-        Integer phone = this.getConsole().readInteger("Introduce un telefono: ");
-        ClinicError error = personalInformationController.registerData(name,surname,phone);
+        String name = this.getConsole().readString("Introduce el nombre: ");
+        String surname = this.getConsole().readString("Introduce el apellido: ");
+        Integer phone = this.getConsole().readInteger("Introduce el telefono: ");
+        Integer age = this.getConsole().readInteger("Introduce la edad: ");
+        ClinicError error = personalInformationController.registerData(name,surname,phone,age);
         if(!error.isStackEmpty()){
             error.buildErrorTrace();
             this.interact(personalInformationController);

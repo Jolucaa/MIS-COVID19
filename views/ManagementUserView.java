@@ -19,7 +19,7 @@ public class ManagementUserView extends ClinicView {
                 new ManagementPatientView().interact(managementUserController.getManagementPatientController());
                 break;
             case 4:
-                new SwichUserView().interact(managementUserController.getSwitchUserController());
+                new SwitchUserView().interact(managementUserController.getSwitchUserController());
                 break;
             case 5:
             default:

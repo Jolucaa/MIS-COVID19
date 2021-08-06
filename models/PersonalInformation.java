@@ -5,6 +5,8 @@ import models.errors.ErrorFieldCantBeBlank;
 import models.errors.ErrorIntegerOutOfBounds;
 import utils.IntegerLimited;
 
+import java.util.Random;
+
 /**
  * Write a description of class PersonalInformation here.
  *
@@ -12,10 +14,13 @@ import utils.IntegerLimited;
  * @version (alpha)
  */
 public class PersonalInformation {
+    private static final Integer PHONE_LONGITUDE = 9;
+    private static final Integer AGE_MAXIM_LONGITUDE = 3;
     private String name;
     private String surname;
     private Integer phone;
-    private IntegerLimited integerLimited;
+    private Integer age;
+    private final Random randomGenerator = new Random();
 
     /**
      * Constructor for objects of class PersonalInformation
@@ -23,7 +28,19 @@ public class PersonalInformation {
      *
      */
     public PersonalInformation() {
-        this.integerLimited = new IntegerLimited(9, 9);
+        this.setPhone(this.generateRandomPhone());
+        this.setAge(this.generateRandomAge());
+    }
+
+    public PersonalInformation(String name, String surname) {
+        this();
+        this.setName(name);
+        this.setSurname(surname);
+    }
+
+    public PersonalInformation(String name, String surname, Integer phone) {
+        this(name,surname);
+        this.setPhone(phone);
     }
 
     /**
@@ -32,25 +49,41 @@ public class PersonalInformation {
      * @param name    String
      * @param surname String
      * @param phone   Integer
+     * @param age Integer
      */
-    public PersonalInformation(String name, String surname, Integer phone) {
-        this.setName(name);
-        this.setSurname(surname);
-        this.setPhone(phone);
-        this.integerLimited = new IntegerLimited(9, 9);
+    public PersonalInformation(String name, String surname, Integer phone, Integer age) {
+        this(name,surname,phone);
+        this.setAge(age);
+    }
+
+
+
+    private Integer generateRandomPhone(){
+        return this.getRandomGenerator().nextInt(9);
+    }
+
+    private Integer generateRandomAge(){
+        return this.getRandomGenerator().nextInt(3);
     }
 
     /**
-     * Comprueba si el campo phone tiene la longitud adecuada
-     *
-     * @return boolean  true si el campo esta en el intervalo
+     * Devuelve devuelve un obejeto de tipo  random
+     * @return Random  - obejto random de la libreria java.util
      */
-    public boolean isValidPhone(Integer phone) {
-        return this.getIntegerLimited().set(phone) != null;
+    private Random getRandomGenerator() {
+        return randomGenerator;
     }
 
-    public IntegerLimited getIntegerLimited() {
-        return integerLimited;
+    /**
+     * Comprueba si el campo pasado como parametro tiene la longitud
+     * especificada por los parametros min y max
+     * @param min - longitud minima del integer
+     * @param max - longitud maxima del integer
+     * @param checkerValue - Integer a comprobar
+     * @return boolean  true si el campo esta en el intervalo
+     */
+    private boolean isValid(Integer min, Integer max,Integer checkerValue){
+        return new IntegerLimited(min,max).check(checkerValue) != null;
     }
 
     /**
@@ -96,7 +129,7 @@ public class PersonalInformation {
      * @param phone Integer
      */
     public ClinicError setPhone(Integer phone) {
-        if(this.isValidPhone(phone)){
+        if(this.isValid(9,9,phone)){
             this.phone = phone;
             return null;
         }
@@ -127,5 +160,23 @@ public class PersonalInformation {
             return null;
         }
         return new ErrorFieldCantBeBlank();
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public ClinicError setAge(Integer age) {
+        ClinicError error = new ClinicError();
+        if(age != null) {
+            if(isValid(1,3,age)) {
+                this.age = age;
+            } else{
+                error.add(new ErrorIntegerOutOfBounds());
+            }
+        } else {
+            error.add(new ErrorFieldCantBeBlank());
+        }
+        return error;
     }
 }

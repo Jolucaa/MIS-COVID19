@@ -1,5 +1,7 @@
 package models;
 
+import models.errors.ClinicError;
+
 /**
  * Write a description of class Administrator here.
  *
@@ -7,12 +9,19 @@ package models;
  * @version (a version number or a date)
  */
 public class Administrator extends UserManager implements MedicalVaccineVisitor {
-
+    private static Integer numInstance = 0;
+    private final Integer identifier;
     /**
      * Constructor for objects of class Administrator
      */
     public Administrator(PersonalInformation personalInformation) {
         super(personalInformation);
+        this.identifier = Administrator.numInstance++;
+    }
+
+    @Override
+    public Integer getId() {
+        return this.identifier;
     }
 
     @Override
@@ -21,18 +30,21 @@ public class Administrator extends UserManager implements MedicalVaccineVisitor 
     }
 
     @Override
-    public void visit(Pfizer pfizer) {
+    public ClinicError visit(Pfizer pfizer) {
 
+        return null;
     }
 
     @Override
-    public void visit(Moderna moderna) {
+    public ClinicError visit(Moderna moderna) {
 
+        return null;
     }
 
     @Override
-    public void visit(Johnson johnson) {
+    public ClinicError visit(Johnson johnson) {
 
+        return null;
     }
 
     @Override
