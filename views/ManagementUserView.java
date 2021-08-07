@@ -7,7 +7,6 @@ public class ManagementUserView extends ClinicView {
 
     public void interact(ManagementUserController managementUserController) {
         this.write();
-        managementUserController.control();
         switch (Console.getConsole().readInteger("Eliga una opcion: ")) {
             case 1:
                 new CreateTechnicianView().interact(managementUserController.getCreateTechnicianController());
