@@ -1,7 +1,9 @@
 package controllers;
 
-import models.*;
-import models.errors.ClinicError;
+import models.Administrator;
+import models.PersonalInformation;
+import models.Reception;
+import models.States;
 import views.MainView;
 import views.ViewVisitor;
 
@@ -20,11 +22,6 @@ public class ManagementUserController extends Controller implements ViewVisitor 
         this.adminCreatorController = new AdminCreatorController(this.getReception());
         this.createTechnicianController = new CreateTechnicianController(this.getReception());
         this.managementPatientController = new ManagementPatientController(this.getReception());
-    }
-
-
-    public ClinicError control() {
-        return null;
     }
 
     public Administrator createAdmin(PersonalInformation personalInformation) {
