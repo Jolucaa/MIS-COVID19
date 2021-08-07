@@ -27,7 +27,7 @@ public class IntegerLimited {
      * @param number a sample parameter for a method
      * @return Integer if value is between interval otherwise null
      */
-    public Integer set(Integer number) {
+    public Integer check(Integer number) {
         if (min <= number && number <= max) {
             return number;
         }
