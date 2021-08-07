@@ -1,6 +1,5 @@
 package controllers;
 
-import models.errors.ClinicError;
 import models.Reception;
 import views.MainView;
 import views.ManagementView;
@@ -21,12 +20,7 @@ public class ManagementInformationController extends Controller implements Manag
     }
 
     @Override
-    public void interact() {
-
-    }
-
-    @Override
     public void interact(MainView viewVisitor) {
-        viewVisitor.visit(this);;
+
     }
 }

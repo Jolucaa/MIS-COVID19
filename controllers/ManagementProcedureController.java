@@ -31,11 +31,6 @@ public class ManagementProcedureController extends Controller implements Managem
         view.visit(this);
     }
 
-    @Override
-    public void interact() {
-        this.control();
-    }
-
     /**
      * An example of a method - replace this comment with your own
      *

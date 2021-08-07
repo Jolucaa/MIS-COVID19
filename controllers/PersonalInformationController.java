@@ -1,12 +1,8 @@
 package controllers;
 
-import models.Person;
 import models.PersonalInformation;
 import models.Reception;
 import models.errors.ClinicError;
-import views.MainView;
-
-import java.lang.reflect.Method;
 
 public class PersonalInformationController extends Controller{
     private PersonalInformation personalInformation;
@@ -14,11 +10,6 @@ public class PersonalInformationController extends Controller{
     protected PersonalInformationController(Reception reception) {
         super(reception);
         personalInformation = new PersonalInformation();
-    }
-
-    @Override
-    public void interact(MainView viewVisitor) {
-        viewVisitor.visit(this);
     }
 
     public ClinicError registerData(String name, String surname, Integer phone,Integer age){

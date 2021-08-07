@@ -1,13 +1,13 @@
 package views;
 
 import controllers.SwitchUserController;
-import models.Person;
+import models.User;
 import utils.Console;
-import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.List;
 
-public class SwichUserView extends ClinicView{
+public class SwitchUserView extends ClinicView {
 
     private SwitchUserController switchUserController;
 
@@ -38,21 +38,21 @@ public class SwichUserView extends ClinicView{
         }
     }
 
-    private void showUserList(List<? extends Person> personList) {
-        Iterator<? extends Person> iterator = personList.iterator();
+    private void showUserList(List<? extends User> personList) {
+        Iterator<? extends User> iterator = personList.iterator();
         int personSelected = this.write(iterator);
         this.switchUser(personList.get(personSelected));
     }
 
-    private void switchUser(Person person) {
-        this.switchUserController.switchUser(person);
+    private void switchUser(User user) {
+        this.switchUserController.switchUser(user);
     }
 
-    private Integer write(Iterator<? extends Person> iterator) {
+    private Integer write(Iterator<? extends User> iterator) {
         int counter = 0;
         while (iterator.hasNext()) {
-            Person person = iterator.next();
-            this.writeConsole(counter++ + " " + person.getNameFormat());
+            User user = iterator.next();
+            this.writeConsole(counter++ + " " + user.getNameFormat());
         }
         return Console.getConsole().readInteger("Seleccione uno:");
     }

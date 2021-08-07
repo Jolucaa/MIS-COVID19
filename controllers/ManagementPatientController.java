@@ -1,7 +1,8 @@
 package controllers;
 
-import models.*;
-import views.MainView;
+import models.Patient;
+import models.PersonalInformation;
+import models.Reception;
 
 import java.util.List;
 
@@ -23,10 +24,5 @@ public class ManagementPatientController extends Controller {
 
     public CreatePatientController getCreatePatientController() {
         return createPatientController;
-    }
-
-    @Override
-    public void interact(MainView viewVisitor) {
-        this.showPatientsAvailable();
     }
 }

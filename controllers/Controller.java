@@ -2,7 +2,6 @@ package controllers;
 
 import models.Reception;
 import models.States;
-import views.ViewVisitor;
 
 
 /**
@@ -10,14 +9,14 @@ import views.ViewVisitor;
  *
  * @author: Date:
  */
-public abstract class Controller implements ViewVisitor {
+public abstract class Controller {
     private Reception reception;
 
     protected Controller(Reception reception) {
         this.reception = reception;
     }
 
-    protected States getState(){
+    protected States getState() {
         return this.getReception().getState();
     }
 

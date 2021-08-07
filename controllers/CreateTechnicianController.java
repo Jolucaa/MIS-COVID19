@@ -3,7 +3,6 @@ package controllers;
 
 import models.PersonalInformation;
 import models.Reception;
-import views.MainView;
 
 /**
  * Write a description of class newTechnicianController here.
@@ -31,11 +30,6 @@ public class CreateTechnicianController extends Controller {
      */
     public void create(PersonalInformation personalInformation) {
         this.getReception().registerTechnician(personalInformation);
-    }
-
-    @Override
-    public void interact(MainView viewVisitor) {
-        viewVisitor.visit(this);
     }
 
     public PersonalInformationController getPersonalInformationController() {

@@ -2,7 +2,6 @@ package controllers;
 
 import models.*;
 import models.errors.ClinicError;
-import views.MainView;
 
 import java.util.List;
 
@@ -47,11 +46,6 @@ public class CreateVaccinationController extends Controller implements MedicalVa
 
     public List<Vaccine> getVaccineCanInject(Patient patient) {
         return this.getReception().getVaccineCanInject(patient);
-    }
-
-    @Override
-    public void interact(MainView viewVisitor) {
-        viewVisitor.visit(this);
     }
 
     @Override

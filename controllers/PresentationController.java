@@ -1,10 +1,8 @@
 package controllers;
 
-import views.MainView;
 import views.PresentationView;
+import views.ViewVisitor;
 
-public interface PresentationController {
+public interface PresentationController extends ViewVisitor {
     void accept(PresentationView view);
-
-    void interact(MainView viewVisitor);
 }

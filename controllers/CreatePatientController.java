@@ -1,7 +1,7 @@
 package controllers;
+
 import models.PersonalInformation;
 import models.Reception;
-import views.MainView;
 
 /**
  * Write a description of class NewPatientController here.
@@ -23,11 +23,6 @@ public class CreatePatientController extends Controller{
 
     public void create(PersonalInformation personalInformation, Integer SIP) {
         this.getReception().registerPatient(personalInformation, SIP);
-    }
-
-    @Override
-    public void interact(MainView viewVisitor) {
-        viewVisitor.visit(this);
     }
 
     public PersonalInformationController getPersonalInformationController() {

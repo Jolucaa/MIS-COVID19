@@ -1,14 +1,13 @@
 package views;
 
 import controllers.CreateVaccinationController;
-import controllers.ResponseController;
 import models.MedicalProcedure;
 import models.Patient;
 import models.Vaccine;
 
 import java.util.List;
 
-public class VaccineInjectNurseView extends ClinicView implements ResponseView {
+public class VaccineInjectNurseView extends ClinicView {
     private List<Vaccine> procedures;
     private CreateVaccinationController vaccinationController;
 
@@ -27,8 +26,4 @@ public class VaccineInjectNurseView extends ClinicView implements ResponseView {
         this.vaccinationController.accept(procedure);
     }
 
-    @Override
-    public void registerResponse(ResponseController responseController) {
-        responseController.visit(this);
-    }
 }

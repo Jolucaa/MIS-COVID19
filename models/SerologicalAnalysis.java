@@ -31,7 +31,7 @@ public class SerologicalAnalysis extends DiagnosticTest {
 
     @Override
     public ClinicError performMedicalProcedure() {
-        this.setResult(this.getAntibodies().set(this.getRandom().nextInt(SerologicalAnalysis.MAX_ANTIBODIES)) > SerologicalAnalysis.ALERT_ANTIBODIES);
+        this.setResult(this.getAntibodies().check(this.getRandom().nextInt(SerologicalAnalysis.MAX_ANTIBODIES)) > SerologicalAnalysis.ALERT_ANTIBODIES);
         this.getReceptorMedicalProcedure().addToMedicalHistory(this);
         return super.performMedicalProcedure();
     }

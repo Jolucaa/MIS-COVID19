@@ -3,7 +3,6 @@ package controllers;
 import models.Administrator;
 import models.PersonalInformation;
 import models.Reception;
-import views.MainView;
 
 /**
  * Write a description of class AdminCreatorController here.
@@ -28,11 +27,6 @@ public class AdminCreatorController extends Controller{
      */
     public Administrator create(PersonalInformation personalInformation) {
         return new Administrator(personalInformation);
-    }
-
-    @Override
-    public void interact(MainView viewVisitor) {
-
     }
 
     public PersonalInformationController getPersonalInformationController() {

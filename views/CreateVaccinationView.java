@@ -1,7 +1,6 @@
 package views;
 
 import controllers.CreateVaccinationController;
-import controllers.ResponseController;
 import models.Patient;
 import models.Vaccine;
 import utils.Console;
@@ -25,8 +24,5 @@ public class CreateVaccinationView extends ClinicView {
         this.writeConsole("--Menu de administracion de vacunas--");
     }
 
-    public void registerResponse(ResponseController responseController) {
-        responseController.visit(this);
-    }
 }
 

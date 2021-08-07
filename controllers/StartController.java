@@ -4,6 +4,7 @@ import models.PersonalInformation;
 import models.Reception;
 import models.States;
 import views.MainView;
+import views.ViewVisitor;
 
 /**
  * Write a description of class StartController here.
@@ -13,7 +14,7 @@ import views.MainView;
  * la clase se encarga de gestionar la logica de seleccion de actores
  * del sistema, pasando una lista de posibles actores a la vista
  */
-public class StartController extends Controller {
+public class StartController extends Controller implements ViewVisitor {
 
     private ManagementUserController managementUserController;
 

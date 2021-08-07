@@ -1,7 +1,6 @@
 package controllers;
 
 import models.*;
-import views.MainView;
 
 import java.util.List;
 
@@ -20,9 +19,9 @@ public class SwitchUserController extends Controller {
         super(reception);
     }
 
-//    public void switchUser(User user){
-//        this.getReception().setUser(user);
-//    }
+    public void switchUser(User user) {
+        this.getReception().setUser(user);
+    }
 
     public Administrator getAdministrator() {
         return this.getReception().getAdministrator();
@@ -40,8 +39,4 @@ public class SwitchUserController extends Controller {
         return this.getReception().getPatientList();
     }
 
-    @Override
-    public void interact(MainView viewVisitor) {
-
-    }
 }
