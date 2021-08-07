@@ -8,6 +8,13 @@ public class ConsoleView implements MainView {
     private final ManagementProcedureView managementProcedureView;
     private final StartView startView;
     private final OperationView operationView;
+    private final ManagementTechnicianView managementTechnicianView;
+    private final PersonalInformationView personalInformationView;
+    private final CreateNurseView createNurseView;
+    private final CreatePatientView createPatientView;
+    private final CreateVaccinationView createVaccinationView;
+    private final CreateTechnicianView createTechnicianView;
+    private final DiagnosticTestViewer diagnosticTestViewer;
 
     public ConsoleView() {
         this.startView = new StartView();
@@ -15,6 +22,13 @@ public class ConsoleView implements MainView {
         this.managementUserView = new ManagementUserView();
         this.managementInformationView = new ManagementInformationView();
         this.managementProcedureView = new ManagementProcedureView();
+        this.managementTechnicianView = new ManagementTechnicianView();
+        this.personalInformationView = new PersonalInformationView();
+        this.createNurseView = new CreateNurseView();
+        this.createPatientView = new CreatePatientView();
+        this.createTechnicianView = new CreateTechnicianView();
+        this.createVaccinationView = new CreateVaccinationView();
+        this.diagnosticTestViewer = new DiagnosticTestViewer();
     }
 
     public void interact(ViewVisitor visitor) {
@@ -33,8 +47,8 @@ public class ConsoleView implements MainView {
         this.managementUserView.interact(managementUserController);
     }
 
-    public void visit(ManagmentInformationController managementController) {
-        this.managementInformationView.interact(managementController);
+    public void visit(ManagementInformationController managementInformationController) {
+        this.managementInformationView.interact(managementInformationController);
     }
 
     public void visit(ManagementProcedureController managementProcedureController) {
@@ -42,12 +56,37 @@ public class ConsoleView implements MainView {
     }
 
     @Override
-    public void visit(CreateNurseController createNurseController) {
-        new CreateNurseView().interact(createNurseController);
+    public void visit(ManagementMedicalEmployeController managementMedicalEmployeController) {
+        this.managementTechnicianView.interact(managementMedicalEmployeController);
+    }
+
+    @Override
+    public void visit(CreateNurseController nurseController) {
+        this.createNurseView.interact(nurseController);
     }
 
     @Override
     public void visit(PersonalInformationController personalInformationController) {
-        new PersonalInformationView().interact(personalInformationController);
+        this.personalInformationView.interact(personalInformationController);
+    }
+
+    @Override
+    public void visit(CreatePatientController createPatientController) {
+        this.createPatientView.interact(createPatientController);
+    }
+
+    @Override
+    public void visit(CreateTechnicianController createTechnicianController) {
+        this.createTechnicianView.interact(createTechnicianController);
+    }
+
+    @Override
+    public void visit(CreateVaccinationController vaccinationController) {
+        this.createVaccinationView.interact(vaccinationController);
+    }
+
+    @Override
+    public void visit(DiagnosticTestController diagnosticTestController) {
+        this.diagnosticTestViewer.interact(diagnosticTestController);
     }
 }

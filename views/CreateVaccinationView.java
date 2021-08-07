@@ -1,51 +1,32 @@
 package views;
 
 import controllers.CreateVaccinationController;
+import controllers.ResponseController;
 import models.Patient;
+import models.Vaccine;
 import utils.Console;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CreateVaccinationView extends ClinicView {
-    private Patient patient;
 
     public void interact(CreateVaccinationController vaccinationController) {
-        this.writeConsole("--Menu de administracuion de vacunas--");
-        this.write(vaccinationController);
-        vaccinationController.showVaccinesAvailables(this.getPatient());
-        new VaccineInjectNurseView().interact(vaccinationController.getVaccinationNurseInjectController(), this.getPatient());
+        this.write();
+        List<Patient> patientList = vaccinationController.showPatientsAvailable();
+        this.writeList(patientList, vaccinationController);
+        List<Vaccine> listOfVaccines = vaccinationController.showVaccinesAvailable(this.getPatient());
+        new VaccineInjectNurseView().interact(vaccinationController, this.getPatient());
         this.getConsole().readInteger("Eliga una opcion: ");
         Console.getConsole().writeln();
-
-    }
-
-
-    protected void write(CreateVaccinationController vaccinationController) {
-        ArrayList<Patient> patientArrayList = vaccinationController.getManagementPatientController().showPatientsAvailable();
-        if (!patientArrayList.isEmpty()) {
-            for (Patient patient : patientArrayList) {
-                this.writeConsole(patientArrayList.listIterator().previousIndex() + " " + patient.getNameFormat() + " " + patient.getSIP());
-            }
-            Integer personSelected = Console.getConsole().readInteger("Seleccione un paciente de la lista por su numero: ");
-            Patient patient = patientArrayList.get(personSelected);
-            this.setPatient(patient);
-        }else{
-            this.writeConsole("No se han encontrado pacientes");
-            this.restart(vaccinationController);
-        }
-    }
-
-    protected Patient getPatient() {
-        return this.patient;
     }
 
     @Override
     protected void write() {
-
+        this.writeConsole("--Menu de administracion de vacunas--");
     }
 
-    protected void setPatient(Patient patient) {
-        this.patient = patient;
+    public void registerResponse(ResponseController responseController) {
+        responseController.visit(this);
     }
 }
 
