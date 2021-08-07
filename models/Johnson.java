@@ -51,8 +51,9 @@ public class Johnson extends Vaccine {
     public String getNameArticle() {
         return this.getClass().getSimpleName();
     }
+
     @Override
-    public Article getArticle() {
+    public Item getArticle() {
         return this;
     }
 

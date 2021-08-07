@@ -7,9 +7,9 @@ package models;
  * @version (a version number or a date)
  */
 
-public interface Article {
+public interface Item {
     String getNameArticle();
 
-    Article getArticle();
+    Item getArticle();
 
 }

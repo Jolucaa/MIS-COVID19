@@ -1,6 +1,7 @@
 package models;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 /**
  * Clase necesaria para rompre el ciclo de Almacen con Vacunas
@@ -13,25 +14,25 @@ public class WarehouseManager {
     private Warehouse warehouse;
 
     /**
-     * Constructor for objects of class GestorAlmacen
+     * Constructor for objects of class WarehouseManager
      */
     public WarehouseManager() {
         this.warehouse = new Warehouse();
     }
 
-    public boolean remove(String name, Article article) {
-        return this.getWarehouse().eliminar(name, article);
+    public boolean remove(String name, Item item) {
+        return this.getWarehouse().remove(name, item);
     }
 
     private Warehouse getWarehouse() {
         return this.warehouse;
     }
 
-    public void add(String name, ArrayList<Article> article) {
-        this.getWarehouse().insertar(name, article);
+    public void add(String name, List<Item> item) {
+        this.getWarehouse().add(name, item);
     }
 
-    public void add(String name, Article article) {
-        this.getWarehouse().insertar(name, article);
+    public void add(String name, Item item) {
+        this.getWarehouse().add(name, item);
     }
 }

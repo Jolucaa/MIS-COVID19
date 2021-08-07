@@ -1,8 +1,8 @@
 package models;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author (your name)
@@ -10,49 +10,49 @@ import java.util.Iterator;
  */
 public class Warehouse {
     // instance variables - replace the example below with your own
-    private HashMap<String, ArrayList<Article>> articulos;
+    private HashMap<String, List<Item>> items;
 
     public Warehouse() {
-        this.articulos = new HashMap();
+        this.items = new HashMap<>();
     }
 
-    public int getNumeroArticulos() {
-        return this.getArticulos().values().size();
+    public int getNumberItems() {
+        return this.getItems().values().size();
     }
 
-    private HashMap<String, ArrayList<Article>> getArticulos() {
-        return this.articulos;
+    private HashMap<String, List<Item>> getItems() {
+        return this.items;
     }
 
-    public void insertar(String nombreArticulo, Article article) {
-        this.getColeccion(nombreArticulo).add(article);
+    public void add(String itemName, Item item) {
+        this.getCollection(itemName).add(item);
     }
 
-    public ArrayList<Article> getColeccion(String nombre) {
-        return this.getArticulos().get(nombre);
+    public List<Item> getCollection(String nombre) {
+        return this.getItems().get(nombre);
     }
 
-    public void insertar(String nombreArticulo, ArrayList<Article> article) {
-        this.getArticulos().put(nombreArticulo, article);
+    public void add(String itemName, List<Item> item) {
+        this.getItems().put(itemName, item);
     }
 
-    public Article getArticulo(String nombre, Article article) {
+    public Item getItem(String name, Item item) {
 
-        Iterator iterador = this.getColeccion(nombre).iterator();
-        return this.buscarArticulo(iterador, article);
+        Iterator<Item> iterator = this.getCollection(name).iterator();
+        return this.searchItem(iterator, item);
     }
 
-    private Article buscarArticulo(Iterator<Article> iterador, Article articleBuscado) {
-        while (iterador.hasNext()) {
-            Article article = iterador.next();
-            if (article == articleBuscado) {
-                return article;
+    private Item searchItem(Iterator<Item> iterator, Item searchedItem) {
+        while (iterator.hasNext()) {
+            Item item = iterator.next();
+            if (item == searchedItem) {
+                return item;
             }
         }
         return null;
     }
 
-    public boolean eliminar(String nombre, Article article) {
-        return this.getColeccion(nombre).remove(article);
+    public boolean remove(String nombre, Item item) {
+        return this.getCollection(nombre).remove(item);
     }
 }

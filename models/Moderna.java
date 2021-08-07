@@ -60,7 +60,7 @@ public class Moderna extends VaccineBiDose {
     }
 
     @Override
-    public Article getArticle() {
+    public Item getArticle() {
         return this;
     }
 }

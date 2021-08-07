@@ -9,7 +9,7 @@ import java.time.LocalDate;
  *
  * @author: Jose Luis Garcia Cabeza Date:
  */
-public abstract class Vaccine extends MedicalProcedure implements Article {
+public abstract class Vaccine extends MedicalProcedure implements Item {
     private final WarehouseManager warehouseManager;
 
     protected Vaccine(ReceptorMedicalProcedure receptorMedicalProcedure, MedicalProcedureManager medicalProcedureManager) {
