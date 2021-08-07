@@ -4,7 +4,7 @@ package models;
 import java.util.List;
 
 /**
- * Clase necesaria para rompre el ciclo de Almacen con Vacunas
+ * Class needed to break cycle of Warehouse with Vaccine
  *
  * @author (your name)
  * @version (a version number or a date)
