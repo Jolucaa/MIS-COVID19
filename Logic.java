@@ -15,7 +15,7 @@ public class Logic{
     private final StartController startController;
     private final OperationController operationController;
     private final ManagementUserController managementUserController;
-    private final ManagmentInformationController managmentInformationController;
+    private final ManagementInformationController managementInformationController;
     private final ManagementProcedureController managementProcedureController;
 
     public Logic() {
@@ -23,7 +23,7 @@ public class Logic{
         this.startController = new StartController(reception);
         this.operationController = new OperationController(reception);
         this.managementUserController = new ManagementUserController(reception);
-        this.managmentInformationController = new ManagmentInformationController(reception);
+        this.managementInformationController = new ManagementInformationController(reception);
         this.managementProcedureController = new ManagementProcedureController(reception);
     }
 
@@ -43,7 +43,7 @@ public class Logic{
             case MEDICAL_PROCESS:
                 return this.managementProcedureController;
             case SEARCH:
-                return this.managmentInformationController;
+                return this.managementInformationController;
             case EXIT:
             default:
                 return null;
