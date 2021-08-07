@@ -11,7 +11,7 @@ public class ManagementPatientView extends ClinicView {
                 new CreatePatientView().interact(managementPatientController.getCreatePatientController());
                 break;
             case 2:
-                this.writePatientList(managementPatientController.showPatientsAvailable(), managementPatientController);
+                this.writeList(managementPatientController.showPatientsAvailable(), managementPatientController);
                 break;
             default:
                 this.restart(managementPatientController);

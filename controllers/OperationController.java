@@ -1,22 +1,24 @@
 package controllers;
+
+import models.Reception;
 import models.States;
 import views.MainView;
 import views.PresentationView;
-import models.Reception;
 
-public class OperationController extends Controller {
+public class OperationController extends Controller implements PresentationController {
 
     private ManagementUserController managementUserController;
     private ManagementProcedureController managementProcedureController;
-    private ManagmentInformationController managmentInformationController;
+    private ManagementInformationController managementInformationController;
 
     public OperationController(Reception reception) {
         super(reception);
         this.managementUserController = new ManagementUserController(this.getReception());
         this.managementProcedureController = new ManagementProcedureController(this.getReception());
-        this.managmentInformationController = new ManagmentInformationController(this.getReception());
+        this.managementInformationController = new ManagementInformationController(this.getReception());
     }
-    public void visit(PresentationView view) {
+
+    public void accept(PresentationView view) {
         view.visit(this);
     }
 
@@ -40,8 +42,8 @@ public class OperationController extends Controller {
         return managementProcedureController;
     }
 
-    public ManagmentInformationController getManagmentInformationController() {
+    public ManagementInformationController getManagementInformationController() {
         this.setState(States.SEARCH);
-        return managmentInformationController;
+        return managementInformationController;
     }
 }

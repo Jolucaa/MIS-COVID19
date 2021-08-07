@@ -1,6 +1,9 @@
 package views;
 
-import controllers.*;
+import controllers.ManagementInformationController;
+import controllers.ManagementMedicalEmployeeController;
+import controllers.ManagementProcedureController;
+import controllers.ManagementUserController;
 
 public interface ManagementView {
 
@@ -10,5 +13,5 @@ public interface ManagementView {
 
     void visit(ManagementProcedureController managementProcedureController);
 
-    void visit(ManagementTechnicianController managementTechnicianController);
+    void visit(ManagementMedicalEmployeeController managementMedicalEmployeeController);
 }

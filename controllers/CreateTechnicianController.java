@@ -1,36 +1,44 @@
 package controllers;
 
 
-import models.*;
+import models.PersonalInformation;
+import models.Reception;
+import views.MainView;
 
 /**
  * Write a description of class newTechnicianController here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
-public class CreateTechnicianController extends Controller
-{
-    /**m
+public class CreateTechnicianController extends Controller {
+    private PersonalInformationController personalInformationController;
+
+    /**
+     * m
      * Construcor generico para instanciar la clase y guardar el objeto
      * Reception en el padre
      */
     public CreateTechnicianController(Reception reception) {
         super(reception);
+        this.personalInformationController = new PersonalInformationController(reception);
     }
 
-    @Override
-    public ClinicError control(){
-        return new ErrorAcces();
-    }
     /**
+     * Crea un técnico de laboratorio
      *
-     * crea un usuario administrador
-     *
-     * @param personalInformation Objeto que encapsula la informacion general de una persona
-     * @return the sum of x and y
+     * @param personalInformation - Objeto que encapsula la información general de una persona
      */
     public void create(PersonalInformation personalInformation) {
         this.getReception().registerTechnician(personalInformation);
+    }
+
+    @Override
+    public void interact(MainView viewVisitor) {
+        viewVisitor.visit(this);
+    }
+
+    public PersonalInformationController getPersonalInformationController() {
+        return this.personalInformationController;
     }
 }

@@ -8,7 +8,7 @@ public class ConsoleView implements MainView {
     private final ManagementProcedureView managementProcedureView;
     private final StartView startView;
     private final OperationView operationView;
-    private final ManagementTechnicianView managementTechnicianView;
+    private final ManagementMedicalEmployeeView managementMedicalEmployeeView;
     private final PersonalInformationView personalInformationView;
     private final CreateNurseView createNurseView;
     private final CreatePatientView createPatientView;
@@ -22,7 +22,7 @@ public class ConsoleView implements MainView {
         this.managementUserView = new ManagementUserView();
         this.managementInformationView = new ManagementInformationView();
         this.managementProcedureView = new ManagementProcedureView();
-        this.managementTechnicianView = new ManagementTechnicianView();
+        this.managementMedicalEmployeeView = new ManagementMedicalEmployeeView();
         this.personalInformationView = new PersonalInformationView();
         this.createNurseView = new CreateNurseView();
         this.createPatientView = new CreatePatientView();
@@ -56,12 +56,12 @@ public class ConsoleView implements MainView {
     }
 
     @Override
-    public void visit(ManagementMedicalEmployeController managementMedicalEmployeController) {
-        this.managementTechnicianView.interact(managementMedicalEmployeController);
+    public void visit(ManagementMedicalEmployeeController managementMedicalEmployeeController) {
+        this.managementMedicalEmployeeView.interact(managementMedicalEmployeeController);
     }
 
     @Override
-    public void visit(CreateNurseController nurseController) {
+    public void visit(NurseController nurseController) {
         this.createNurseView.interact(nurseController);
     }
 

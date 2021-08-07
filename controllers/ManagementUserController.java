@@ -8,7 +8,7 @@ import views.MainView;
 import views.ViewVisitor;
 
 public class ManagementUserController extends Controller implements ViewVisitor {
-    private CreateNurseController createNurseController;
+    private NurseController nurseController;
     private SwitchUserController switchUserController;
     private AdminCreatorController adminCreatorController;
     private CreateTechnicianController createTechnicianController;
@@ -18,7 +18,7 @@ public class ManagementUserController extends Controller implements ViewVisitor 
     public ManagementUserController(Reception reception) {
         super(reception);
         this.switchUserController = new SwitchUserController(this.getReception());
-        this.createNurseController = new CreateNurseController(this.getReception());
+        this.nurseController = new NurseController(this.getReception());
         this.adminCreatorController = new AdminCreatorController(this.getReception());
         this.createTechnicianController = new CreateTechnicianController(this.getReception());
         this.managementPatientController = new ManagementPatientController(this.getReception());
@@ -32,12 +32,12 @@ public class ManagementUserController extends Controller implements ViewVisitor 
         return this.createTechnicianController;
     }
 
-    public void createNurseController(PersonalInformation personalInformation) {
+    public void createNurse(PersonalInformation personalInformation) {
         this.getCreateNurseController().create(personalInformation);
     }
 
-    public CreateNurseController getCreateNurseController(){
-        return this.createNurseController;
+    public NurseController getCreateNurseController() {
+        return this.nurseController;
     }
 
     public SwitchUserController getSwitchUserController() {

@@ -1,6 +1,6 @@
 package views;
 
-import controllers.*;
+import controllers.OperationController;
 
 public class OperationView extends ClinicView{
 
@@ -14,7 +14,7 @@ public class OperationView extends ClinicView{
                 new ManagementProcedureView().interact(controller.getManagementProcedureController());
                 break;
             case 3:
-                new ManagementInformationView().interact(controller.getManagmentInformationController());
+                new ManagementInformationView().interact(controller.getManagementInformationController());
                 break;
             case 4:
             default:

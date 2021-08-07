@@ -1,34 +1,35 @@
 package controllers;
+
 import models.PersonalInformation;
 import models.Reception;
 import views.MainView;
 
 /**
- * Write a description of class NewPatientController here.
+ * Write a description of class NurseController here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class CreatePatientController extends Controller{
-
+public class NurseController extends Controller {
     private PersonalInformationController personalInformationController;
 
     /**
-     * Constructor for objects of class NewPatientController
+     * Constructor for objects of class NurseController
      */
-    public CreatePatientController(Reception reception) {
+    public NurseController(Reception reception) {
         super(reception);
-        this.personalInformationController = new PersonalInformationController(this.getReception());
+        this.personalInformationController = new PersonalInformationController(reception);
     }
 
-    public void create(PersonalInformation personalInformation, Integer SIP) {
-        this.getReception().registerPatient(personalInformation, SIP);
+    public void create(PersonalInformation personalInformation) {
+        this.getReception().registerNurse(personalInformation);
     }
 
     @Override
     public void interact(MainView viewVisitor) {
         viewVisitor.visit(this);
     }
+
 
     public PersonalInformationController getPersonalInformationController() {
         return this.personalInformationController;

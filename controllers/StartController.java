@@ -1,8 +1,9 @@
 package controllers;
-import views.MainView;
+
 import models.PersonalInformation;
 import models.Reception;
 import models.States;
+import views.MainView;
 
 /**
  * Write a description of class StartController here.
@@ -53,9 +54,11 @@ public class StartController extends Controller {
 
     /**
      * Inserta datos para poder usar el programa
-     *
      */
     private void generateFixtures() {
     }
 
+    public AdminCreatorController getAdminCreatorController() {
+        return new AdminCreatorController(this.getReception());
+    }
 }

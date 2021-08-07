@@ -1,7 +1,9 @@
 package controllers;
-import models.*;
 
-import java.util.ArrayList;
+import models.*;
+import views.MainView;
+
+import java.util.List;
 
 /**
  * Write a description of class SwitchUserController here.
@@ -9,8 +11,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class SwitchUserController extends Controller{
-    // instance variables - replace the example below with your own
+public class SwitchUserController extends Controller {
 
     /**
      * Constructor for objects of class SwitchUserController
@@ -19,35 +20,28 @@ public class SwitchUserController extends Controller{
         super(reception);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     *
-     *
-     */
-    @Override
-    public ClinicError control() {
-        return  null;
+//    public void switchUser(User user){
+//        this.getReception().setUser(user);
+//    }
+
+    public Administrator getAdministrator() {
+        return this.getReception().getAdministrator();
     }
 
-    public void switchUser(Person person){
-
-    }
-
-    public Administrator getAdministrator(){
-       return this.getReception().getAdministrator();
-    }
-
-    public ArrayList<Technician> getTechnicianList() {
+    public List<Technician> getTechnicianList() {
         return this.getReception().getTechnicianList();
     }
 
-    public ArrayList<Nurse> getNurseList() {
+    public List<Nurse> getNurseList() {
         return this.getReception().getNurseList();
     }
 
-    public ArrayList<Patient> getPatientList() {
+    public List<Patient> getPatientList() {
         return this.getReception().getPatientList();
     }
 
+    @Override
+    public void interact(MainView viewVisitor) {
+
+    }
 }
