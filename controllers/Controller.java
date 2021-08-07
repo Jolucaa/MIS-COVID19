@@ -19,7 +19,7 @@ public abstract class Controller implements ViewVisitor {
 
     protected States getState(){
         return this.getReception().getState();
-    };
+    }
 
     public void setState(States state){
         this.getReception().setState(state);
