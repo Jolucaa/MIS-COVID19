@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Write a description of class NurseManager here.
@@ -37,10 +38,10 @@ public class NurseManager extends GenericManager<Nurse> {
         return new Nurse(personalInformation);
     }
 
-    public ArrayList<Nurse> getNursesAvailable(){
+    public List<Nurse> getNursesAvailable() {
         ArrayList<Nurse> nursesAvailable = new ArrayList<>();
-        for(Nurse nurse:this.getArrayList()){
-            if(nurse.isNurseAvailable()){
+        for (Nurse nurse : this.getArrayList()) {
+            if (nurse.isNurseAvailable()) {
                 nursesAvailable.add(nurse);
             }
         }
