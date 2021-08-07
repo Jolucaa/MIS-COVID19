@@ -1,9 +1,9 @@
 package controllers;
 
 import models.Administrator;
-import models.ClinicError;
 import models.PersonalInformation;
 import models.Reception;
+import views.MainView;
 
 /**
  * Write a description of class AdminCreatorController here.
@@ -24,14 +24,18 @@ public class AdminCreatorController extends Controller{
      * crea un usuario administrador
      *
      * @param personalInformation Objeto que encapsula la informacion general de una persona
-     * @return the sum of x and y
+     * @return Administrator - Objeto de tipo Admnistrador
      */
     public Administrator create(PersonalInformation personalInformation) {
         return new Administrator(personalInformation);
     }
 
     @Override
-    public ClinicError control() {
-        return null;
+    public void interact(MainView viewVisitor) {
+
+    }
+
+    public PersonalInformationController getPersonalInformationController() {
+        return new PersonalInformationController(this.getReception());
     }
 }
