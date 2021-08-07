@@ -13,15 +13,6 @@ public abstract class Person implements User{
         this.information = information;
     }
 
-    /**
-     * Comprueba si el campo phone tiene la longitud adecuada
-     *
-     * @return boolean  true si el campo esta en el intervalo
-     */
-    public boolean isValidPhone(Integer phone) {
-        return this.getPersonalInformation().isValidPhone(phone);
-    }
-
     protected PersonalInformation getPersonalInformation() {
         return this.information;
     }
