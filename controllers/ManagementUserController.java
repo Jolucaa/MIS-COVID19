@@ -11,7 +11,7 @@ public class ManagementUserController extends Controller implements ViewVisitor 
     private NurseController nurseController;
     private SwitchUserController switchUserController;
     private AdminCreatorController adminCreatorController;
-    private CreateTechnicianController createTechnicianController;
+    private TechnicianController technicianController;
     private ManagementPatientController managementPatientController;
 
 
@@ -20,7 +20,7 @@ public class ManagementUserController extends Controller implements ViewVisitor 
         this.switchUserController = new SwitchUserController(this.getReception());
         this.nurseController = new NurseController(this.getReception());
         this.adminCreatorController = new AdminCreatorController(this.getReception());
-        this.createTechnicianController = new CreateTechnicianController(this.getReception());
+        this.technicianController = new TechnicianController(this.getReception());
         this.managementPatientController = new ManagementPatientController(this.getReception());
     }
 
@@ -28,8 +28,8 @@ public class ManagementUserController extends Controller implements ViewVisitor 
         return this.getAdminCreatorController().create(personalInformation);
     }
 
-    public CreateTechnicianController getCreateTechnicianController() {
-        return this.createTechnicianController;
+    public TechnicianController getCreateTechnicianController() {
+        return this.technicianController;
     }
 
     public void createNurse(PersonalInformation personalInformation) {

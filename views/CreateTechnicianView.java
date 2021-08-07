@@ -1,13 +1,13 @@
 package views;
 
-import controllers.CreateTechnicianController;
+import controllers.TechnicianController;
 
 public class CreateTechnicianView extends ClinicView{
 
 
-    public void interact(CreateTechnicianController createTechnicianController){
+    public void interact(TechnicianController technicianController) {
         this.writeConsole("Rellene los campos para crear un tecnico");
-        createTechnicianController.create(new PersonalInformationView().interact(createTechnicianController.getPersonalInformationController()));
+        technicianController.create(new PersonalInformationView().interact(technicianController.getPersonalInformationController()));
 
     }
 

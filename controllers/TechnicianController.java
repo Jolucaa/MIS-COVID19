@@ -10,7 +10,7 @@ import models.Reception;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class CreateTechnicianController extends Controller {
+public class TechnicianController extends Controller {
     private PersonalInformationController personalInformationController;
 
     /**
@@ -18,7 +18,7 @@ public class CreateTechnicianController extends Controller {
      * Construcor generico para instanciar la clase y guardar el objeto
      * Reception en el padre
      */
-    public CreateTechnicianController(Reception reception) {
+    public TechnicianController(Reception reception) {
         super(reception);
         this.personalInformationController = new PersonalInformationController(reception);
     }
