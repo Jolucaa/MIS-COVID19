@@ -24,15 +24,15 @@ public abstract class Controller {
         this.getReception().setState(state);
     }
 
-    protected Reception getReception(){
+    protected Reception getReception() {
         return this.reception;
     }
 
-    public void exit(){
+    public void exit() {
         this.setState(States.EXIT);
     }
 
-    public OperationController restart() {
-        return new OperationController(this.getReception());
+    public void restart() {
+        this.setState(States.MANAGEMENT);
     }
 }

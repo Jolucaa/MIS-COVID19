@@ -3,7 +3,6 @@ package views;
 import controllers.Controller;
 import models.Patient;
 import models.Person;
-import models.States;
 import utils.Console;
 
 import java.util.List;
@@ -32,8 +31,7 @@ public abstract class ClinicView {
     }
 
     protected void restart(Controller controller) {
-        controller.setState(States.INITIAL);
-        new OperationView().interact(controller.restart());
+        controller.restart();
     }
 
     protected void writeList(List<? extends Patient> list, Controller controller) {
