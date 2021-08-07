@@ -17,14 +17,14 @@ import java.util.List;
  * @version (a version number or a date)
  */
 public class ManagementProcedureController extends Controller implements ManagementController, ViewVisitor {
-    private CreateVaccinationController createVaccinationController;
+    private VaccinationController vaccinationController;
 
     /**
      * Constructor for objects of class ManagementProcedureController
      */
     public ManagementProcedureController(Reception reception) {
         super(reception);
-        this.createVaccinationController = new CreateVaccinationController(this.getReception());
+        this.vaccinationController = new VaccinationController(this.getReception());
     }
 
     public void accept(ManagementView view) {
@@ -51,7 +51,7 @@ public class ManagementProcedureController extends Controller implements Managem
         viewVisitor.visit(this);
     }
 
-    public CreateVaccinationController getCreateVaccinationController() {
-        return createVaccinationController;
+    public VaccinationController getCreateVaccinationController() {
+        return vaccinationController;
     }
 }

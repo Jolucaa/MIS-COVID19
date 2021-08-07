@@ -6,16 +6,16 @@ import models.errors.ClinicError;
 import java.util.List;
 
 
-public class CreateVaccinationController extends Controller implements MedicalVaccineVisitor {
+public class VaccinationController extends Controller implements MedicalVaccineVisitor {
     private ManagementPatientController managementPatientController;
 
     /**
-     * Constructor for objects of class CreateVaccinationController
+     * Constructor for objects of class VaccinationController
      *
      * @param reception - La clase con la que interactuan los controladores
      *                  con los modelos
      */
-    public CreateVaccinationController(Reception reception) {
+    public VaccinationController(Reception reception) {
         super(reception);
         this.managementPatientController = new ManagementPatientController(this.getReception());
     }

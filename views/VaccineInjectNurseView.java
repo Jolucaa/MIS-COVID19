@@ -1,6 +1,6 @@
 package views;
 
-import controllers.CreateVaccinationController;
+import controllers.VaccinationController;
 import models.MedicalProcedure;
 import models.Patient;
 import models.Vaccine;
@@ -9,9 +9,9 @@ import java.util.List;
 
 public class VaccineInjectNurseView extends ClinicView {
     private List<Vaccine> procedures;
-    private CreateVaccinationController vaccinationController;
+    private VaccinationController vaccinationController;
 
-    void interact(CreateVaccinationController vaccinationController, Patient patient) {
+    void interact(VaccinationController vaccinationController, Patient patient) {
         this.vaccinationController = vaccinationController;
         this.procedures = this.vaccinationController.getVaccineCanInject(patient);
     }

@@ -81,7 +81,7 @@ public class ConsoleView implements MainView {
     }
 
     @Override
-    public void visit(CreateVaccinationController vaccinationController) {
+    public void visit(VaccinationController vaccinationController) {
         this.createVaccinationView.interact(vaccinationController);
     }
 

@@ -18,7 +18,7 @@ public class ManagementPatientController extends Controller {
         return this.getReception().getPatientList();
     }
 
-    public void createPatient(PersonalInformation personalInformation, Integer age, Integer SIP){
+    public void createPatient(PersonalInformation personalInformation, Integer SIP) {
         this.getCreatePatientController().create(personalInformation, SIP);
     }
 

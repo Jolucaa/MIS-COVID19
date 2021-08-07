@@ -1,11 +1,11 @@
 package views;
 
-import controllers.CreateVaccinationController;
 import controllers.DiagnosticTestController;
+import controllers.VaccinationController;
 
 public interface MedicalProceduresView {
 
-    void visit(CreateVaccinationController createVaccinationController);
+    void visit(VaccinationController vaccinationController);
 
     void visit(DiagnosticTestController diagnosticTestController);
 }
