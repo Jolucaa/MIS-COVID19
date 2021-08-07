@@ -7,14 +7,14 @@ import models.Reception;
 import java.util.List;
 
 public class ManagementPatientController extends Controller {
-    private CreatePatientController createPatientController;
+    private PatientController patientController;
 
     public ManagementPatientController(Reception reception) {
         super(reception);
-        this.createPatientController = new CreatePatientController(reception);
+        this.patientController = new PatientController(reception);
     }
 
-    public List<Patient> showPatientsAvailable(){
+    public List<Patient> showPatientsAvailable() {
         return this.getReception().getPatientList();
     }
 
@@ -22,7 +22,7 @@ public class ManagementPatientController extends Controller {
         this.getCreatePatientController().create(personalInformation, SIP);
     }
 
-    public CreatePatientController getCreatePatientController() {
-        return createPatientController;
+    public PatientController getCreatePatientController() {
+        return patientController;
     }
 }

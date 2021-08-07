@@ -1,16 +1,16 @@
 package views;
 
-import controllers.CreatePatientController;
+import controllers.PatientController;
 import models.PersonalInformation;
 import utils.Console;
 
 public class CreatePatientView extends ClinicView{
 
-    public void interact(CreatePatientController createPatientController){
+    public void interact(PatientController patientController) {
         this.write();
-        PersonalInformation personalInformation = new PersonalInformationView().interact(createPatientController.getPersonalInformationController());
+        PersonalInformation personalInformation = new PersonalInformationView().interact(patientController.getPersonalInformationController());
         Integer SIP = Console.getConsole().readInteger("Introduce la SIP del paciente");
-        createPatientController.create(personalInformation, SIP);
+        patientController.create(personalInformation, SIP);
 
     }
 

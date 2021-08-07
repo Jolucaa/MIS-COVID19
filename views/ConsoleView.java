@@ -71,8 +71,8 @@ public class ConsoleView implements MainView {
     }
 
     @Override
-    public void visit(CreatePatientController createPatientController) {
-        this.createPatientView.interact(createPatientController);
+    public void visit(PatientController patientController) {
+        this.createPatientView.interact(patientController);
     }
 
     @Override

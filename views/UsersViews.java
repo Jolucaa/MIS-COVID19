@@ -1,7 +1,7 @@
 package views;
 
-import controllers.CreatePatientController;
 import controllers.NurseController;
+import controllers.PatientController;
 import controllers.PersonalInformationController;
 import controllers.TechnicianController;
 
@@ -10,7 +10,7 @@ public interface UsersViews {
 
     void visit(PersonalInformationController personalInformationController);
 
-    void visit(CreatePatientController createPatientController);
+    void visit(PatientController patientController);
 
     void visit(TechnicianController technicianController);
 }

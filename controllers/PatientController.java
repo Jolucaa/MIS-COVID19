@@ -9,14 +9,14 @@ import models.Reception;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class CreatePatientController extends Controller{
+public class PatientController extends Controller {
 
     private PersonalInformationController personalInformationController;
 
     /**
      * Constructor for objects of class NewPatientController
      */
-    public CreatePatientController(Reception reception) {
+    public PatientController(Reception reception) {
         super(reception);
         this.personalInformationController = new PersonalInformationController(this.getReception());
     }

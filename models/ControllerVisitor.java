@@ -13,7 +13,7 @@ public interface ControllerVisitor {
 
      void visit(AdminCreatorController controller);
 
-     void visit(CreatePatientController controller);
+     void visit(PatientController controller);
 
      void visit(ManagementProcedureController controller);
 
