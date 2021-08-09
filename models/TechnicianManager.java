@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Write a description of class TechnicianManager here.
@@ -26,7 +27,7 @@ public class TechnicianManager extends GenericManager<Technician> {
     }
 
     @Override
-    protected ArrayList<Technician> getArrayList() {
+    protected List<Technician> getList() {
         return this.technicians;
     }
 
@@ -40,10 +41,10 @@ public class TechnicianManager extends GenericManager<Technician> {
         return new Technician(personalInformation);
     }
 
-    public ArrayList<Technician> getTechniciansAvailables(){
+    public List<Technician> getTechniciansAvailable() {
         ArrayList<Technician> technicianAvailable = new ArrayList<>();
-        for(Technician technician:this.getArrayList()){
-            if(technician.isNurseAvailable()){
+        for (Technician technician : this.getList()) {
+            if (technician.isAvailable()) {
                 technicianAvailable.add(technician);
             }
         }

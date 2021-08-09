@@ -8,9 +8,10 @@ import java.time.LocalDate;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Technician extends MedicalEmployee implements DiagnosticTestAnalyzer {
+public class Technician extends MedicalEmployee implements DiagnosticTestAnalyzer, User {
 
     private final Integer MAXIM_NUMBER_PROCEDURES_FOR_WEEK = 4;
+
     /**
      * Constructor for objects of class Technician
      */
@@ -23,30 +24,10 @@ public class Technician extends MedicalEmployee implements DiagnosticTestAnalyze
         return this.getCollegiateNumber();
     }
 
-    @Override
-    public void visit(PCR pcr) {
-
-    }
-
-    @Override
-    public void visit(SerologicalAnalysis serologicalAnalysis) {
-
-    }
-
-    @Override
-    public void visit(ClassicTest classicTest) {
-
-    }
-
-    @Override
-    public void visit(FastTest fastTest) {
-
-    }
-
-    public boolean isNurseAvailable(){
+    public boolean isAvailable() {
         Integer numberOfProceduresInOneWeek = 0;
-        for(Patient patient:this.getPatientManager().getArrayList()){
-            if(patient.getMedicalHistory().isEmpty()){
+        for (Patient patient : this.getPatientManager().getList()) {
+            if (patient.getMedicalHistory().isEmpty()) {
                 numberOfProceduresInOneWeek += patient.getProcedureInWeekWith(this, LocalDate.now());
             }
         }

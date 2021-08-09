@@ -8,9 +8,10 @@ import models.errors.ClinicError;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Administrator extends UserManager implements MedicalVaccineVisitor {
+public class Administrator extends UserManager implements MedicalProcedureVisitor {
     private static Integer numInstance = 0;
     private final Integer identifier;
+
     /**
      * Constructor for objects of class Administrator
      */
@@ -24,10 +25,6 @@ public class Administrator extends UserManager implements MedicalVaccineVisitor 
         return this.identifier;
     }
 
-    @Override
-    public void visit(PCR pcr) {
-
-    }
 
     @Override
     public ClinicError visit(Pfizer pfizer) {
@@ -45,6 +42,11 @@ public class Administrator extends UserManager implements MedicalVaccineVisitor 
     public ClinicError visit(Johnson johnson) {
 
         return null;
+    }
+
+    @Override
+    public void visit(PCR pcr) {
+
     }
 
     @Override

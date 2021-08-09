@@ -1,14 +1,12 @@
 package models;
 
-import utils.Console;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public abstract class GenericManager<T> {
 
     public void register(T object) {
         if (!this.isRegistered(object)) {
-            this.getArrayList().add(this.create(this.getPersonalInformation(object)));
+            this.getList().add(this.create(this.getPersonalInformation(object)));
         } else {
             this.edit(this.getId(object));
         }
@@ -16,14 +14,14 @@ public abstract class GenericManager<T> {
 
     protected abstract PersonalInformation getPersonalInformation(T object);
 
-    protected abstract ArrayList<T> getArrayList();
+    protected abstract List<T> getList();
 
     protected abstract Integer getId(T object);
 
     public abstract T create(PersonalInformation personalInformation);
 
     public void add(T object) {
-        this.getArrayList().add(object);
+        this.getList().add(object);
     }
 
     public void edit(Integer objectId) {
@@ -35,7 +33,7 @@ public abstract class GenericManager<T> {
     protected T getPerson(Integer objectId) {
         assert (objectId != null);
         assert (objectId >= 0);
-        assert (this.getArrayList().isEmpty());
+        assert (this.getList().isEmpty());
 
         return this.search(objectId);
     }
@@ -44,7 +42,7 @@ public abstract class GenericManager<T> {
         assert (objectId != null);
         assert (objectId >= 0);
 
-        for (T object : this.getArrayList()) {
+        for (T object : this.getList()) {
             if (this.getId(object).equals(objectId)) {
                 return object;
             }

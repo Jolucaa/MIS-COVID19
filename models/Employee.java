@@ -6,7 +6,7 @@ package models;
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class Employee extends Person implements MedicalDiagnosticVisitor {
+public abstract class Employee extends Person {
     private final PatientManager patientManager;
 
     protected Employee(PersonalInformation personalInformation) {

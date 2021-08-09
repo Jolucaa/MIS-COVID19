@@ -25,7 +25,7 @@ public class NurseManager extends GenericManager<Nurse> {
         return nurse.getPersonalInformation();
     }
 
-    protected ArrayList<Nurse> getArrayList() {
+    protected ArrayList<Nurse> getList() {
         return this.nurses;
     }
 
@@ -40,8 +40,8 @@ public class NurseManager extends GenericManager<Nurse> {
 
     public List<Nurse> getNursesAvailable() {
         ArrayList<Nurse> nursesAvailable = new ArrayList<>();
-        for (Nurse nurse : this.getArrayList()) {
-            if (nurse.isNurseAvailable()) {
+        for (Nurse nurse : this.getList()) {
+            if (nurse.isAvailable()) {
                 nursesAvailable.add(nurse);
             }
         }

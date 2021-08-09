@@ -59,7 +59,7 @@ public class Reception {
     }
 
     public List<Technician> getTechnicianAvailables() {
-        return this.getAdministrator().getTechnicianManager().getTechniciansAvailables();
+        return this.getAdministrator().getTechnicianManager().getTechniciansAvailable();
     }
 
     public States getState() {
@@ -71,15 +71,15 @@ public class Reception {
     }
 
     public List<Technician> getTechnicianList(){
-        return this.getAdministrator().getTechnicianManager().getArrayList();
+        return this.getAdministrator().getTechnicianManager().getList();
     }
 
     public List<Patient> getPatientList(){
-        return this.getAdministrator().getPatientManager().getArrayList();
+        return this.getAdministrator().getPatientManager().getList();
     }
 
     public List<Nurse> getNurseList(){
-        return this.getAdministrator().getNurseManager().getArrayList();
+        return this.getAdministrator().getNurseManager().getList();
     }
 
     public List<MedicalProcedure> getMedicalProcessForPatient(Patient patient){

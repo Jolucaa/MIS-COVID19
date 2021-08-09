@@ -1,7 +1,7 @@
 package models;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.List;
 
 /**
  * Write a description of class PatientManager here.
@@ -27,7 +27,7 @@ public class PatientManager extends GenericManager<Patient> {
     }
 
     @Override
-    protected ArrayList<Patient> getArrayList() {
+    protected List<Patient> getList() {
         return this.patients;
     }
 
@@ -46,8 +46,8 @@ public class PatientManager extends GenericManager<Patient> {
     }
     
     public boolean isPriorityPatient(){
-        for (Patient patient: this.getArrayList()) {
-            if(this.isPriority(patient)){
+        for (Patient patient : this.getList()) {
+            if (this.isPriority(patient)) {
                 return true;
             }
         }
