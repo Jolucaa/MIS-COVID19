@@ -31,7 +31,7 @@ public class ClinicError {
     }
 
     public void add(ClinicError error) {
-        if(error != null) {
+        if (error != null) {
             this.errors.add(error);
         }
     }
@@ -40,8 +40,8 @@ public class ClinicError {
         return this.errors;
     }
 
-    public ClinicError getError() {
-        return this.getStackErrors().get(this.getStackErrors().size());
+    protected ClinicError getError() {
+        return this.getStackErrors().get(this.getStackErrors().size() - 1);
     }
 
     protected String getErrorMessage() {
@@ -50,7 +50,7 @@ public class ClinicError {
 
     public String buildErrorTrace() {
         StringBuilder errorTrace = new StringBuilder();
-        while (!this.getStackErrors().isEmpty()) {
+        while (!this.isStackEmpty()) {
             errorTrace.append(this.getError().getErrorMessage()).append("/n");
             this.remove();
             this.buildErrorTrace();
@@ -63,6 +63,6 @@ public class ClinicError {
     }
 
     public boolean isStackEmpty(){
-        return this.getStackErrors().size() == 0;
+        return this.getStackErrors().isEmpty();
     }
 }
