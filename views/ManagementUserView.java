@@ -9,18 +9,15 @@ public class ManagementUserView extends ClinicView {
         this.write();
         switch (Console.getConsole().readInteger("Eliga una opcion: ")) {
             case 1:
-                new CreateTechnicianView().interact(managementUserController.getCreateTechnicianController());
+                new ManagementMedicalEmployeeView().interact(managementUserController.getManagementMedicalEmployeeController());
                 break;
             case 2:
-                new CreateNurseView().interact(managementUserController.getCreateNurseController());
+                new ManagementPatientView().interact(managementUserController.getPatientController());
                 break;
             case 3:
-                new ManagementPatientView().interact(managementUserController.getManagementPatientController());
-                break;
-            case 4:
                 new SwitchUserView().interact(managementUserController.getSwitchUserController());
                 break;
-            case 5:
+            case 4:
             default:
                 this.restart(managementUserController);
                 break;
@@ -30,11 +27,10 @@ public class ManagementUserView extends ClinicView {
     @Override
     protected void write() {
         this.writeConsole("--Menu de administracion de usuarios--");
-        this.writeConsole("1 Crear Tecnico/a");
-        this.writeConsole("2 Crear Enfermero/a");
-        this.writeConsole("3 Gestionar Pacientes");
-        this.writeConsole("4 Cambiar Rol");
-        this.writeConsole("5 Menu Principal");
+        this.writeConsole("1 Gestionar Empleados");
+        this.writeConsole("2 Gestionar Pacientes");
+        this.writeConsole("3 Cambiar Rol");
+        this.writeConsole("4 Menu Principal");
 
     }
 }

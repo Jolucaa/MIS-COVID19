@@ -1,6 +1,7 @@
 package views;
 
 import controllers.*;
+import views.commands.MenuOperation;
 
 public class ConsoleView implements MainView {
     private final ManagementUserView managementUserView;
@@ -9,12 +10,6 @@ public class ConsoleView implements MainView {
     private final StartView startView;
     private final OperationView operationView;
     private final ManagementMedicalEmployeeView managementMedicalEmployeeView;
-    private final PersonalInformationView personalInformationView;
-    private final CreateNurseView createNurseView;
-    private final CreatePatientView createPatientView;
-    private final CreateVaccinationView createVaccinationView;
-    private final CreateTechnicianView createTechnicianView;
-    private final DiagnosticTestViewer diagnosticTestViewer;
 
     public ConsoleView() {
         this.startView = new StartView();
@@ -23,12 +18,6 @@ public class ConsoleView implements MainView {
         this.managementInformationView = new ManagementInformationView();
         this.managementProcedureView = new ManagementProcedureView();
         this.managementMedicalEmployeeView = new ManagementMedicalEmployeeView();
-        this.personalInformationView = new PersonalInformationView();
-        this.createNurseView = new CreateNurseView();
-        this.createPatientView = new CreatePatientView();
-        this.createTechnicianView = new CreateTechnicianView();
-        this.createVaccinationView = new CreateVaccinationView();
-        this.diagnosticTestViewer = new DiagnosticTestViewer();
     }
 
     public void interact(ViewVisitor visitor) {
@@ -41,6 +30,7 @@ public class ConsoleView implements MainView {
 
     public void visit(OperationController operationController) {
         this.operationView.interact(operationController);
+        new MenuOperation().setView(this.operationView);
     }
 
     public void visit(ManagementUserController managementUserController) {
@@ -58,35 +48,5 @@ public class ConsoleView implements MainView {
     @Override
     public void visit(ManagementMedicalEmployeeController managementMedicalEmployeeController) {
         this.managementMedicalEmployeeView.interact(managementMedicalEmployeeController);
-    }
-
-    @Override
-    public void visit(NurseController nurseController) {
-        this.createNurseView.interact(nurseController);
-    }
-
-    @Override
-    public void visit(PersonalInformationController personalInformationController) {
-        this.personalInformationView.interact(personalInformationController);
-    }
-
-    @Override
-    public void visit(PatientController patientController) {
-        this.createPatientView.interact(patientController);
-    }
-
-    @Override
-    public void visit(TechnicianController technicianController) {
-        this.createTechnicianView.interact(technicianController);
-    }
-
-    @Override
-    public void visit(VaccinationController vaccinationController) {
-        this.createVaccinationView.interact(vaccinationController);
-    }
-
-    @Override
-    public void visit(DiagnosticTestController diagnosticTestController) {
-        this.diagnosticTestViewer.interact(diagnosticTestController);
     }
 }

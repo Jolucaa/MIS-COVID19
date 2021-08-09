@@ -2,8 +2,6 @@
 comment0.target=OperationalView
 comment1.params=managementUserController
 comment1.target=void\ visit(controllers.ManagementUserController)
-comment2.params=managementController
-comment2.target=void\ visit(controllers.ManagementController)
 comment3.params=managementProcedureController
 comment3.target=void\ visit(controllers.ManagementProcedureController)
 numComments=4

@@ -20,7 +20,7 @@ public class TechnicianController extends Controller {
      */
     public TechnicianController(Reception reception) {
         super(reception);
-        this.personalInformationController = new PersonalInformationController(reception);
+        this.personalInformationController = new PersonalInformationController();
     }
 
     /**

@@ -3,58 +3,42 @@ package controllers;
 import models.Administrator;
 import models.PersonalInformation;
 import models.Reception;
-import models.States;
 import views.MainView;
 import views.ViewVisitor;
 
 public class ManagementUserController extends Controller implements ViewVisitor {
-    private NurseController nurseController;
     private SwitchUserController switchUserController;
-    private AdminCreatorController adminCreatorController;
-    private TechnicianController technicianController;
-    private ManagementPatientController managementPatientController;
+    private AdminController adminController;
+    private PatientController patientController;
+    private ManagementMedicalEmployeeController managementMedicalEmployeeController;
 
 
     public ManagementUserController(Reception reception) {
         super(reception);
         this.switchUserController = new SwitchUserController(this.getReception());
-        this.nurseController = new NurseController(this.getReception());
-        this.adminCreatorController = new AdminCreatorController(this.getReception());
-        this.technicianController = new TechnicianController(this.getReception());
-        this.managementPatientController = new ManagementPatientController(this.getReception());
+        this.adminController = new AdminController(this.getReception());
+        this.patientController = new PatientController(this.getReception());
+        this.managementMedicalEmployeeController = new ManagementMedicalEmployeeController(this.getReception());
     }
 
     public Administrator createAdmin(PersonalInformation personalInformation) {
-        return this.getAdminCreatorController().create(personalInformation);
-    }
-
-    public TechnicianController getCreateTechnicianController() {
-        return this.technicianController;
-    }
-
-    public void createNurse(PersonalInformation personalInformation) {
-        this.getCreateNurseController().create(personalInformation);
-    }
-
-    public NurseController getCreateNurseController() {
-        return this.nurseController;
+        return this.getAdminController().create(personalInformation);
     }
 
     public SwitchUserController getSwitchUserController() {
         return switchUserController;
     }
 
-    public AdminCreatorController getAdminCreatorController() {
-        return adminCreatorController;
+    public AdminController getAdminController() {
+        return adminController;
     }
 
-    public ManagementPatientController getManagementPatientController() {
-        return managementPatientController;
+    public PatientController getPatientController() {
+        return patientController;
     }
 
-
-    public void exit() {
-        this.getReception().setState(States.EXIT);
+    public ManagementMedicalEmployeeController getManagementMedicalEmployeeController() {
+        return this.managementMedicalEmployeeController;
     }
 
     @Override

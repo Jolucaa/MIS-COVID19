@@ -59,7 +59,7 @@ public class StartController extends Controller implements ViewVisitor {
     private void generateFixtures() {
     }
 
-    public AdminCreatorController getAdminCreatorController() {
-        return new AdminCreatorController(this.getReception());
+    public AdminController getAdminCreatorController() {
+        return new AdminController(this.getReception());
     }
 }

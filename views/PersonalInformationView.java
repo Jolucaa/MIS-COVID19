@@ -3,11 +3,9 @@ package views;
 import controllers.PersonalInformationController;
 import models.PersonalInformation;
 import models.errors.ClinicError;
-import utils.Console;
 
 public class PersonalInformationView extends ClinicView{
     public PersonalInformation interact(PersonalInformationController personalInformationController){
-        this.write();
         String name = this.getConsole().readString("Introduce el nombre: ");
         String surname = this.getConsole().readString("Introduce el apellido: ");
         Integer phone = this.getConsole().readInteger("Introduce el telefono: ");
@@ -22,6 +20,6 @@ public class PersonalInformationView extends ClinicView{
 
     @Override
     protected void write() {
-        this.writeConsole("Porfavor relene los siguientes datos");
+        this.writeConsole("Porfavor rellene los siguientes datos");
     }
 }

@@ -5,7 +5,6 @@ import models.Reception;
 import models.errors.ClinicError;
 import models.errors.ErrorPatientWithoutProcedures;
 import views.MainView;
-import views.ManagementView;
 import views.ViewVisitor;
 
 import java.util.List;
@@ -16,8 +15,9 @@ import java.util.List;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class ManagementProcedureController extends Controller implements ManagementController, ViewVisitor {
+public class ManagementProcedureController extends Controller implements ViewVisitor {
     private VaccinationController vaccinationController;
+    private DiagnosticTestController diagnosticTestController;
 
     /**
      * Constructor for objects of class ManagementProcedureController
@@ -25,10 +25,7 @@ public class ManagementProcedureController extends Controller implements Managem
     public ManagementProcedureController(Reception reception) {
         super(reception);
         this.vaccinationController = new VaccinationController(this.getReception());
-    }
-
-    public void accept(ManagementView view) {
-        view.visit(this);
+        this.diagnosticTestController = new DiagnosticTestController();
     }
 
     /**
@@ -51,7 +48,7 @@ public class ManagementProcedureController extends Controller implements Managem
         viewVisitor.visit(this);
     }
 
-    public VaccinationController getCreateVaccinationController() {
+    public VaccinationController getVaccinationController() {
         return vaccinationController;
     }
 }

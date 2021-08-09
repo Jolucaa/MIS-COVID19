@@ -1,18 +1,16 @@
 package controllers;
 
 import models.PersonalInformation;
-import models.Reception;
 import models.errors.ClinicError;
 
-public class PersonalInformationController extends Controller{
+public class PersonalInformationController {
     private PersonalInformation personalInformation;
 
-    protected PersonalInformationController(Reception reception) {
-        super(reception);
+    public PersonalInformationController() {
         personalInformation = new PersonalInformation();
     }
 
-    public ClinicError registerData(String name, String surname, Integer phone,Integer age){
+    public ClinicError registerData(String name, String surname, Integer phone, Integer age) {
         ClinicError error = new ClinicError();
         error.add(personalInformation.setName(name));
         error.add(personalInformation.setSurname(surname));

@@ -1,6 +1,6 @@
 package views;
 
-import controllers.AdminCreatorController;
+import controllers.AdminController;
 import models.PersonalInformation;
 import utils.Console;
 
@@ -11,8 +11,8 @@ public class AdminCreatorView extends OperationView {
         personalInformationView = new PersonalInformationView();
     }
 
-    public PersonalInformation interact(AdminCreatorController adminCreatorController) {
-        PersonalInformation personalInformation = this.personalInformationView.interact(adminCreatorController.getPersonalInformationController());
+    public PersonalInformation interact(AdminController adminController) {
+        PersonalInformation personalInformation = this.personalInformationView.interact(adminController.getPersonalInformationController());
         Console.getConsole().write("Se ha creado un administrador: " + personalInformation.getNameFormat());
         return personalInformation;
     }

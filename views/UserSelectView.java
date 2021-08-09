@@ -1,6 +1,6 @@
 package views;
 
-import controllers.AdminCreatorController;
+import controllers.AdminController;
 
 /**
  * Write a description of class UserSelectView here.
@@ -17,7 +17,7 @@ public class UserSelectView extends ClinicView {
         super();
     }
 
-    public void interact(AdminCreatorController controller) {
+    public void interact(AdminController controller) {
 
     }
 

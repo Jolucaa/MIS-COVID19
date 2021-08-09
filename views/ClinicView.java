@@ -34,7 +34,7 @@ public abstract class ClinicView {
         controller.restart();
     }
 
-    protected void writeList(List<? extends Patient> list, Controller controller) {
+    protected void writeList(List<? extends Person> list, Controller controller) {
         if (!list.isEmpty()) {
             for (Person person : list) {
                 this.writeConsole(list.listIterator().previousIndex() + " " + person.getId() + " " + person.getNameFormat());
@@ -49,5 +49,4 @@ public abstract class ClinicView {
     protected Integer registerResponse() {
         return 0;
     }
-
 }

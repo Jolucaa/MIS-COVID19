@@ -5,17 +5,18 @@ import models.PersonalInformation;
 import models.Reception;
 
 /**
- * Write a description of class AdminCreatorController here.
+ * Write a description of class AdminController here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class AdminCreatorController extends Controller{
-    /**m
+public class AdminController extends Controller {
+    /**
+     * m
      * Construcor generico para instanciar la clase y guardar el objeto
      * Reception en el padre
      */
-    public AdminCreatorController(Reception reception) {
+    public AdminController(Reception reception) {
         super(reception);
     }
 
@@ -30,6 +31,6 @@ public class AdminCreatorController extends Controller{
     }
 
     public PersonalInformationController getPersonalInformationController() {
-        return new PersonalInformationController(this.getReception());
+        return new PersonalInformationController();
     }
 }

@@ -1,7 +1,10 @@
 package controllers;
 
+import models.Nurse;
 import models.PersonalInformation;
 import models.Reception;
+
+import java.util.List;
 
 /**
  * Write a description of class NurseController here.
@@ -17,11 +20,15 @@ public class NurseController extends Controller {
      */
     public NurseController(Reception reception) {
         super(reception);
-        this.personalInformationController = new PersonalInformationController(reception);
+        this.personalInformationController = new PersonalInformationController();
     }
 
     public void create(PersonalInformation personalInformation) {
         this.getReception().registerNurse(personalInformation);
+    }
+
+    public List<Nurse> getNursesAvailables() {
+        return this.getReception().getNursesAvailable();
     }
 
     public PersonalInformationController getPersonalInformationController() {

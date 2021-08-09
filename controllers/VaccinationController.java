@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public class VaccinationController extends Controller implements MedicalVaccineVisitor {
-    private ManagementPatientController managementPatientController;
+    private PatientController patientController;
 
     /**
      * Constructor for objects of class VaccinationController
@@ -17,7 +17,7 @@ public class VaccinationController extends Controller implements MedicalVaccineV
      */
     public VaccinationController(Reception reception) {
         super(reception);
-        this.managementPatientController = new ManagementPatientController(this.getReception());
+        this.patientController = new PatientController(this.getReception());
     }
 
     public void createPfizer(Patient patient, Nurse nurse) {
@@ -32,12 +32,12 @@ public class VaccinationController extends Controller implements MedicalVaccineV
         patient.addToMedicalHistory(new Pfizer(patient, nurse));
     }
 
-    private ManagementPatientController getManagementPatientController() {
-        return this.managementPatientController;
+    private PatientController getPatientController() {
+        return this.patientController;
     }
 
     public List<Patient> showPatientsAvailable() {
-        return this.getManagementPatientController().showPatientsAvailable();
+        return this.getPatientController().showPatientsAvailable();
     }
 
     public List<Vaccine> showVaccinesAvailable(Patient patient) {

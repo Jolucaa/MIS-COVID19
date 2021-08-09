@@ -1,6 +1,0 @@
-#BlueJ class context
-comment0.target=newVaccinationController
-comment1.params=reception
-comment1.target=newVaccinationController(models.Reception)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ newVaccinationController\r\n\r\n\ @param\ reception\r\n\ @param\ view\r\n
-numComments=2

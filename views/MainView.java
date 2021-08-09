@@ -1,5 +1,5 @@
 package views;
 
-public interface MainView extends PresentationView, ManagementView, MedicalProceduresView, UsersViews, InformationViews, View{
+public interface MainView extends PresentationView, ManagementView, View {
 
 }
