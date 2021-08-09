@@ -14,10 +14,6 @@ public abstract class MedicalEmployee extends Employee {
         this.collegiateNumber = instanceNumber++;
     }
 
-    public void HealthEmployee() {
-        
-    }
-
     public Integer getCollegiateNumber() {
         return this.collegiateNumber;
     }
