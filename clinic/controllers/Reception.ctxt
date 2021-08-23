@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=Reception
+comment1.params=administrator
+comment1.target=Administrator\ setAdministrator(Administrator)
+comment2.params=patient
+comment2.target=void\ redirectPatient(Patient)
+comment3.params=
+comment3.target=void\ registerPatient()
+comment4.params=personalData
+comment4.target=void\ registerTechnician(PersonalInformation)
+comment5.params=personalData
+comment5.target=void\ registerNurse(PersonalInformation)
+comment6.params=
+comment6.target=Administrator\ getAdministrator()
+comment7.params=
+comment7.target=Patient\ getPatient()
+comment8.params=
+comment8.target=States\ getState()
+comment9.params=state
+comment9.target=void\ setState(States)
+numComments=10

@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Nurse
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Nurse\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=personalData
+comment1.target=Nurse(PersonalInformation)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Nurse\r\n
+comment2.params=pcr
+comment2.target=void\ visit(PCR)
+comment3.params=pfizer
+comment3.target=void\ visit(Pfizer)
+comment4.params=moderna
+comment4.target=void\ visit(Moderna)
+comment5.params=johnson
+comment5.target=void\ visit(Johnson)
+comment6.params=serologicalAnalysis
+comment6.target=void\ visit(SerologicalAnalysis)
+comment7.params=classicTest
+comment7.target=void\ visit(ClassicTest)
+comment8.params=fastTest
+comment8.target=void\ visit(FastTest)
+comment9.params=antigenTest
+comment9.target=void\ collect(AntigenTest)
+numComments=10

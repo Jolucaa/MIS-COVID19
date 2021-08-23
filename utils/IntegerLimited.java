@@ -27,10 +27,10 @@ public class IntegerLimited {
      * @param number a sample parameter for a method
      * @return Integer if value is between interval otherwise null
      */
-    public Integer check(Integer number) {
-        if (min <= number && number <= max) {
-            return number;
+    public boolean check(Integer number) {
+        if (number == null) {
+            return false;
         }
-        return null;
+        return min <= number && number <= max;
     }
 }

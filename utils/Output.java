@@ -26,7 +26,7 @@ public class Output {
         System.out.println();
     }
 
-    public void writeErr(Exception exception) {
-        System.err.print(exception);
+    public void writeErr(String string) {
+        System.err.println(string);
     }
 }

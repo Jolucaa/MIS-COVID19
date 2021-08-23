@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=IdentifierGenericFamily
+comment1.params=state
+comment1.target=void\ setState(clinic.models.StatesIdentifierFamily)
+comment2.params=
+comment2.target=clinic.models.StatesIdentifierFamily\ getState()
+comment3.params=medicalProcedure
+comment3.target=void\ accept(clinic.models.medical.MedicalProcedure)
+comment4.params=familyObject
+comment4.target=void\ identify(clinic.models.medical.MedicalProcedure)
+comment5.params=familyObject
+comment5.target=void\ setFamilyObject(clinic.models.medical.MedicalProcedure)
+comment6.params=
+comment6.target=clinic.models.medical.MedicalProcedure\ getAndRenewValue()
+comment7.params=
+comment7.target=clinic.models.medical.MedicalProcedure\ getFamilyObject()
+comment8.params=
+comment8.target=boolean\ isBelongsFamily()
+comment9.params=
+comment9.target=void\ reset()
+numComments=10

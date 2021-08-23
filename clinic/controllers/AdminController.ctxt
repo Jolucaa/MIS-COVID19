@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=AdminCreatorController
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ AdminCreatorController\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=reception
+comment1.target=AdminCreatorController(clinic.models.Reception)
+comment1.text=\r\n\ Construcor\ generico\ para\ instanciar\ la\ clase\ y\ guardar\ el\ objeto\r\n\ Reception\ en\ el\ padre\r\n
+comment2.params=personalData
+comment2.target=void\ create(clinic.models.PersonalInformation)
+comment2.text=\r\n\ crea\ un\ usuario\ administrador\r\n\r\n\ @param\ personalData\ Objeto\ que\ encapsula\ la\ informacion\ general\ de\ una\ persona\r\n\ @return\ the\ sum\ of\ x\ and\ y\r\n
+comment3.params=
+comment3.target=void\ control()
+numComments=4

@@ -51,7 +51,7 @@ public class Console {
             this.writeln();
             return this.getReader().readString();
         } catch (Exception ioException) {
-            this.writeErr(ioException);
+            this.writeErr(ioException.toString());
         }
         return this.readString(title);
     }
@@ -62,13 +62,13 @@ public class Console {
             this.writeln();
             return this.getReader().readInteger();
         } catch (Exception ioException) {
-            this.writeErr(ioException);
+            this.writeErr(ioException.toString());
         }
         return this.readInteger(title);
     }
 
-    private void writeErr(Exception exception) {
-        this.getOutput().writeErr(exception);
+    public void writeErr(String string) {
+        this.getOutput().writeErr(string);
     }
 
     public Character readChar(String title) {
@@ -77,7 +77,7 @@ public class Console {
             this.writeln();
             return this.getReader().readChar();
         } catch (Exception ioException) {
-            this.writeErr(ioException);
+            this.writeErr(ioException.toString());
         }
         return this.readChar(title);
     }

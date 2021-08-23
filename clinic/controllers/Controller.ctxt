@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Controller
+comment0.text=\r\n\ Abstract\ class\ Clinicas.Controlador\ -\ write\ a\ description\ of\ the\ class\ here\r\n\r\n\ @author\:\ Date\:\r\n
+comment1.params=reception
+comment1.target=Controller(clinic.models.Reception)
+comment2.params=
+comment2.target=clinic.models.States\ getState()
+comment3.params=state
+comment3.target=void\ setState(clinic.models.States)
+comment4.params=
+comment4.target=clinic.models.Reception\ getReception()
+comment5.params=view
+comment5.target=void\ accept(clinic.views.View)
+numComments=6

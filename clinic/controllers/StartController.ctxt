@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=StartController
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ StartController\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n\ la\ clase\ se\ encarga\ de\ gestionar\ la\ logica\ de\ seleccion\ de\ actores\r\n\ del\ sistema,\ pasando\ una\ lista\ de\ posibles\ actores\ a\ la\ vista\r\n
+comment1.params=reception
+comment1.target=StartController(clinic.models.Reception)
+comment1.text=\r\n\ Construcor\ generico\ para\ instanciar\ la\ clase\ y\ guardar\ el\ objeto\r\n\ Reception\ en\ el\ padre,\ crea\ los\ objetos\ necesarios\ por\ la\ instancia\ para\r\n\ funcionar\r\n
+comment2.params=view
+comment2.target=void\ accept(clinic.views.View)
+comment2.text=\r\n\ acepta\ un\ objeto\ de\ tipo\ view\ para\ lanzarle\ un\ mensaje\ a\ continuacion\r\n\r\n\ @param\ view\ una\ vista\ generica,\ a\ la\ que\ le\ pasamos\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ la\ instancia\ como\ parametro,\ para\ que\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ el\ receptor\ sepa\ de\ que\ tipo\ de\ objeto\ se\ trata.\r\n
+comment3.params=personalData
+comment3.target=void\ start(clinic.models.PersonalInformation)
+comment3.text=\r\n\ Realiza\ las\ operaciones\ necesarias\ para\ iniciar\ la\ aplicacion\ a\ un\ estado\ optimo\r\n\r\n\ @param\ personalData\ un\ visitador\ de\ controlador,\ usado\ por\ las\ vistas\r\n
+comment4.params=
+comment4.target=void\ generateFixtures()
+comment4.text=\r\n\ Inserta\ datos\ para\ poder\ usar\ el\ programa\r\n\r\n
+numComments=5

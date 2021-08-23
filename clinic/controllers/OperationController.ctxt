@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=OperationController
+comment1.params=reception
+comment1.target=OperationController(clinic.models.Reception)
+comment2.params=
+comment2.target=Controller\ getOperationController()
+comment3.params=visitor
+comment3.target=void\ accept(clinic.views.View)
+comment4.params=view
+comment4.target=void\ visit(clinic.views.View)
+comment5.params=
+comment5.target=java.util.ArrayList\ getOperationalControllersControl()
+comment6.params=operationController
+comment6.target=void\ add(OperationalController)
+numComments=7
